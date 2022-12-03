@@ -1,0 +1,56 @@
+==================
+Single shape
+==================
+
+foo
+
+---
+
+(source_file (shape (identifier)))
+
+==================
+Inline shapes
+==================
+
+a;b;c
+
+---
+
+(source_file
+  (shape
+    (identifier))
+  (shape
+    (identifier))
+  (shape
+    (identifier)))
+
+==================
+Number identifier
+==================
+
+1;1a;b2
+
+---
+
+(source_file
+  (shape
+    (identifier))
+  (shape
+    (identifier))
+  (shape
+    (identifier)))
+
+
+==================
+Aliased shapes
+==================
+
+a: Hello World
+
+---
+
+(source_file
+  (shape
+    id: (identifier)
+    label: (label)))
+

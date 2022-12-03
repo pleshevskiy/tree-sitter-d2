@@ -1,0 +1,13 @@
+==================
+Simple name
+==================
+
+foo--bar
+
+---
+
+(source_file
+  (connection
+    left: (identifier)
+    (arrow)
+    right: (identifier)))

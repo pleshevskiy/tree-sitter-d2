@@ -1,0 +1,8 @@
+{
+  "name": "tree-sitter-d2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "grammar.js",
+  "author": "",
+  "license": "ISC"
+}
