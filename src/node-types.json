@@ -63,27 +63,20 @@
   {
     "type": "shape",
     "named": true,
-    "fields": {
-      "id": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "label": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "label",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        }
+      ]
     }
   },
   {

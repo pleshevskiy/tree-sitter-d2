@@ -12,9 +12,9 @@
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 15
 #define EXTERNAL_TOKEN_COUNT 1
-#define FIELD_COUNT 4
+#define FIELD_COUNT 2
 #define MAX_ALIAS_SEQUENCE_LENGTH 4
-#define PRODUCTION_ID_COUNT 4
+#define PRODUCTION_ID_COUNT 2
 
 enum {
   anon_sym_SEMI = 1,
@@ -217,33 +217,22 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
 };
 
 enum {
-  field_id = 1,
-  field_label = 2,
-  field_left = 3,
-  field_right = 4,
+  field_left = 1,
+  field_right = 2,
 };
 
 static const char * const ts_field_names[] = {
   [0] = NULL,
-  [field_id] = "id",
-  [field_label] = "label",
   [field_left] = "left",
   [field_right] = "right",
 };
 
 static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
-  [1] = {.index = 0, .length = 1},
-  [2] = {.index = 1, .length = 2},
-  [3] = {.index = 3, .length = 2},
+  [1] = {.index = 0, .length = 2},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
   [0] =
-    {field_id, 0},
-  [1] =
-    {field_id, 0},
-    {field_label, 2},
-  [3] =
     {field_left, 0},
     {field_right, 2},
 };
@@ -326,18 +315,19 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 2:
       if (lookahead == '\n') SKIP(2)
-      if (lookahead == '"') ADVANCE(30);
+      if (lookahead == '"') ADVANCE(29);
       if (lookahead == '\'') ADVANCE(23);
-      if (lookahead == '`') ADVANCE(33);
+      if (lookahead == '`') ADVANCE(32);
       if (lookahead == '\t' ||
           lookahead == '\r' ||
           lookahead == ' ') ADVANCE(13);
       if (lookahead != 0 &&
+          lookahead != ';' &&
           lookahead != '{') ADVANCE(14);
       END_STATE();
     case 3:
       if (lookahead == '\n') SKIP(3)
-      if (lookahead == '`') ADVANCE(32);
+      if (lookahead == '`') ADVANCE(33);
       if (lookahead == '\t' ||
           lookahead == '\r' ||
           lookahead == ' ') ADVANCE(25);
@@ -346,7 +336,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 4:
       if (lookahead == '\n') SKIP(4)
-      if (lookahead == '"') ADVANCE(29);
+      if (lookahead == '"') ADVANCE(30);
       if (lookahead == '\t' ||
           lookahead == '\r' ||
           lookahead == ' ') ADVANCE(24);
@@ -394,20 +384,22 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 13:
       ACCEPT_TOKEN(aux_sym_label_token1);
-      if (lookahead == '"') ADVANCE(30);
+      if (lookahead == '"') ADVANCE(29);
       if (lookahead == '\'') ADVANCE(23);
-      if (lookahead == '`') ADVANCE(33);
+      if (lookahead == '`') ADVANCE(32);
       if (lookahead == '\t' ||
           lookahead == '\r' ||
           lookahead == ' ') ADVANCE(13);
       if (lookahead != 0 &&
           lookahead != '\n' &&
+          lookahead != ';' &&
           lookahead != '{') ADVANCE(14);
       END_STATE();
     case 14:
       ACCEPT_TOKEN(aux_sym_label_token1);
       if (lookahead != 0 &&
           lookahead != '\n' &&
+          lookahead != ';' &&
           lookahead != '{') ADVANCE(14);
       END_STATE();
     case 15:
@@ -441,11 +433,12 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(anon_sym_SQUOTE);
       if (lookahead != 0 &&
           lookahead != '\n' &&
+          lookahead != ';' &&
           lookahead != '{') ADVANCE(14);
       END_STATE();
     case 24:
       ACCEPT_TOKEN(aux_sym_string_token1);
-      if (lookahead == '"') ADVANCE(29);
+      if (lookahead == '"') ADVANCE(30);
       if (lookahead == '\t' ||
           lookahead == '\r' ||
           lookahead == ' ') ADVANCE(24);
@@ -455,7 +448,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 25:
       ACCEPT_TOKEN(aux_sym_string_token1);
-      if (lookahead == '`') ADVANCE(32);
+      if (lookahead == '`') ADVANCE(33);
       if (lookahead == '\t' ||
           lookahead == '\r' ||
           lookahead == ' ') ADVANCE(25);
@@ -485,13 +478,14 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(anon_sym_DQUOTE);
       if (lookahead != 0 &&
           lookahead != '\n' &&
-          lookahead != '\'') ADVANCE(27);
+          lookahead != ';' &&
+          lookahead != '{') ADVANCE(14);
       END_STATE();
     case 30:
       ACCEPT_TOKEN(anon_sym_DQUOTE);
       if (lookahead != 0 &&
           lookahead != '\n' &&
-          lookahead != '{') ADVANCE(14);
+          lookahead != '\'') ADVANCE(27);
       END_STATE();
     case 31:
       ACCEPT_TOKEN(anon_sym_BQUOTE);
@@ -500,13 +494,14 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(anon_sym_BQUOTE);
       if (lookahead != 0 &&
           lookahead != '\n' &&
-          lookahead != '\'') ADVANCE(27);
+          lookahead != ';' &&
+          lookahead != '{') ADVANCE(14);
       END_STATE();
     case 33:
       ACCEPT_TOKEN(anon_sym_BQUOTE);
       if (lookahead != 0 &&
           lookahead != '\n' &&
-          lookahead != '{') ADVANCE(14);
+          lookahead != '\'') ADVANCE(27);
       END_STATE();
     default:
       return false;
@@ -926,9 +921,9 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [97] = {.entry = {.count = 1, .reusable = true}}, SHIFT(21),
   [99] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_string, 2),
   [101] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_string, 2),
-  [103] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_shape, 2, .production_id = 1),
-  [105] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_shape, 4, .production_id = 2),
-  [107] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_connection, 4, .production_id = 3),
+  [103] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_shape, 2),
+  [105] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_shape, 4),
+  [107] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_connection, 4, .production_id = 1),
   [109] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_string, 3),
   [111] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_string, 3),
   [113] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_label, 1),

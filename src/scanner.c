@@ -15,31 +15,43 @@ static void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
 
 static bool scan_identifier(TSLexer *lexer) {
   lexer->result_symbol = IDENTIFIER;
+  while (iswspace(lexer->lookahead)) {
+    skip(lexer);
+  }
+
   for (bool has_content = false;; has_content = true) {
     lexer->mark_end(lexer);
 
-    while (iswspace(lexer->lookahead)) {
-      skip(lexer);
-    }
-
-    int32_t next = lexer->lookahead;
-
-    if (next == '{' || next == ':' || next == ';' || next == '\n' || next == 0) {
-      return has_content;
-    }
-
-    // arrows
-    if (next == '-') {
-      advance(lexer);
-      int32_t next_2 = lexer->lookahead;
-      if (next_2 == '-' || next_2 == '>') {
-        return has_content;
+    for (;;) {
+      switch (lexer->lookahead) {
+        case '{':
+        case ':':
+        case ';':
+        case '<':
+        case '\n':
+        case '\0':
+          return has_content;
       }
-    } else if (next == '<') {
-      return has_content;
+
+      if (iswspace(lexer->lookahead)) {
+        advance(lexer);
+      } else {
+        break;
+      }
     }
 
-    advance(lexer);
+    switch (lexer->lookahead) {
+      case '-':
+        advance(lexer);
+        switch (lexer->lookahead) {
+          case '-':
+          case '>':
+            return has_content;
+        }
+        break;
+      default:
+        advance(lexer);
+    }
   }
 }
 

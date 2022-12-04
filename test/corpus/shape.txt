@@ -1,12 +1,31 @@
 ==================
-Single shape
+Simple shape
 ==================
 
 foo
+bar
 
 ---
 
-(source_file (shape (identifier)))
+(source_file
+  (shape (identifier))
+  (shape (identifier))
+)
+
+==================
+Complex identifier
+==================
+
+ Foo bar 
+-Biz-baz-
+
+---
+
+(source_file
+  (shape (identifier))
+  (shape (identifier))
+)
+
 
 ==================
 Inline shapes
@@ -22,35 +41,22 @@ a;b;c
   (shape
     (identifier))
   (shape
-    (identifier)))
-
-==================
-Number identifier
-==================
-
-1;1a;b2
-
----
-
-(source_file
-  (shape
     (identifier))
-  (shape
-    (identifier))
-  (shape
-    (identifier)))
-
+)
 
 ==================
 Aliased shapes
 ==================
 
-a: Hello World
+a: Foo Bar
+
+a: Foo Bar; b: Biz Baz
 
 ---
 
 (source_file
-  (shape
-    id: (identifier)
-    label: (label)))
+  (shape (identifier) (label))
+  (shape (identifier) (label))
+  (shape (identifier) (label))
+)
 

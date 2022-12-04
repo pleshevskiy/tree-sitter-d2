@@ -19,16 +19,9 @@ module.exports = grammar({
         $._end
       ),
 
-    shape: ($) =>
-      prec.left(
-        seq(
-          field("id", $.identifier),
-          optional(seq(":", field("label", $.label))),
-          $._end
-        )
-      ),
+    shape: ($) => seq($.identifier, optional(seq(":", $.label)), $._end),
 
-    label: ($) => choice($.string, /[^\n{]+/),
+    label: ($) => choice($.string, /[^\n;{]+/),
 
     identifier: ($) => $._identifier,
 
