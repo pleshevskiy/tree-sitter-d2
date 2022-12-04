@@ -36,12 +36,9 @@ a;b;c
 ---
 
 (source_file
-  (shape
-    (identifier))
-  (shape
-    (identifier))
-  (shape
-    (identifier))
+  (shape (identifier))
+  (shape (identifier))
+  (shape (identifier))
 )
 
 ==================
