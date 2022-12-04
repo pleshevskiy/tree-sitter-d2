@@ -73,3 +73,27 @@ foo--bar->biz->baz
     (identifier)
   )
 )
+
+==================
+Descripted connection
+==================
+
+foo--bar: Question?
+bar->baz: Yes
+
+---
+
+(source_file
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+    (label)
+  )
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+    (label)
+  )
+)
