@@ -1,13 +1,33 @@
 module.exports = grammar({
   name: "d2",
 
+  word: ($) => $._word,
+
   rules: {
     // TODO: add the actual grammar rules
     source_file: ($) => repeat($._definition),
 
-    _definition: ($) => choice($.connection, $.shape),
+    _definition: ($) => choice($.attribute, $.connection, $.shape),
 
-    _end: ($) => choice(";", "\n"),
+    _end: ($) => choice(";", "\n", "\0"),
+
+    attribute: ($) =>
+      choice(
+        seq(
+          $.identifier,
+          repeat1(seq($.dot, $.keyword)),
+          ":",
+          alias($.label, $.attribute_value),
+          $._end
+        ),
+        seq(
+          $.keyword,
+          repeat(seq($.dot, $.keyword)),
+          ":",
+          alias($.label, $.attribute_value),
+          $._end
+        )
+      ),
 
     connection: ($) =>
       seq(
@@ -32,6 +52,8 @@ module.exports = grammar({
     label: ($) => choice($.string, $._unquoted_string),
 
     identifier: ($) => $._identifier,
+
+    keyword: ($) => choice("direction"),
 
     _identifier: ($) =>
       prec.right(

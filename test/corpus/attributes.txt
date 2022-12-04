@@ -1,0 +1,12 @@
+==================
+Keywords
+==================
+
+direction: value
+
+---
+
+(source_file
+  (attribute (keyword) (attribute_value))
+)
+

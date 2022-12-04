@@ -5,6 +5,48 @@
     "fields": {}
   },
   {
+    "type": "attribute",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_value",
+          "named": true
+        },
+        {
+          "type": "dot",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "attribute_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "connection",
     "named": true,
     "fields": {},
@@ -29,6 +71,11 @@
   },
   {
     "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "keyword",
     "named": true,
     "fields": {}
   },
@@ -79,6 +126,10 @@
       "required": false,
       "types": [
         {
+          "type": "attribute",
+          "named": true
+        },
+        {
           "type": "connection",
           "named": true
         },
@@ -93,6 +144,10 @@
     "type": "string",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "\u0000",
+    "named": false
   },
   {
     "type": "\n",
@@ -136,6 +191,10 @@
   },
   {
     "type": "`",
+    "named": false
+  },
+  {
+    "type": "direction",
     "named": false
   },
   {
