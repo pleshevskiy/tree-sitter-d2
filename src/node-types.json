@@ -5,34 +5,12 @@
     "fields": {}
   },
   {
-    "type": "attribute",
+    "type": "attr_key",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "attribute_value",
-          "named": true
-        },
-        {
-          "type": "dot",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "keyword",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
-    "type": "attribute_value",
+    "type": "attr_value",
     "named": true,
     "fields": {},
     "children": {
@@ -71,11 +49,6 @@
   },
   {
     "type": "identifier",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "keyword",
     "named": true,
     "fields": {}
   },
@@ -126,11 +99,23 @@
       "required": false,
       "types": [
         {
-          "type": "attribute",
+          "type": "attr_key",
+          "named": true
+        },
+        {
+          "type": "attr_value",
           "named": true
         },
         {
           "type": "connection",
+          "named": true
+        },
+        {
+          "type": "dot",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -174,6 +159,10 @@
     "named": false
   },
   {
+    "type": "3d",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
@@ -194,11 +183,83 @@
     "named": false
   },
   {
-    "type": "direction",
+    "type": "animated",
+    "named": false
+  },
+  {
+    "type": "border-radius",
+    "named": false
+  },
+  {
+    "type": "constraint",
     "named": false
   },
   {
     "type": "dot",
     "named": true
+  },
+  {
+    "type": "fill",
+    "named": false
+  },
+  {
+    "type": "font-color",
+    "named": false
+  },
+  {
+    "type": "height",
+    "named": false
+  },
+  {
+    "type": "icon",
+    "named": false
+  },
+  {
+    "type": "label",
+    "named": false
+  },
+  {
+    "type": "link",
+    "named": false
+  },
+  {
+    "type": "multiple",
+    "named": false
+  },
+  {
+    "type": "opacity",
+    "named": false
+  },
+  {
+    "type": "shadow",
+    "named": false
+  },
+  {
+    "type": "shape",
+    "named": false
+  },
+  {
+    "type": "source-arrowhead",
+    "named": false
+  },
+  {
+    "type": "stroke",
+    "named": false
+  },
+  {
+    "type": "stroke-dash",
+    "named": false
+  },
+  {
+    "type": "stroke-width",
+    "named": false
+  },
+  {
+    "type": "target-arrowhead",
+    "named": false
+  },
+  {
+    "type": "width",
+    "named": false
   }
 ]
