@@ -1,13 +1,75 @@
 ==================
-Simple name
+Simple connection
 ==================
 
 foo--bar
+biz->baz
+biz<->baz
+biz<-baz
 
 ---
 
 (source_file
   (connection
-    left: (identifier)
+    (identifier)
     (arrow)
-    right: (identifier)))
+    (identifier)
+  )
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+)
+
+=============================
+Complex identifier connection
+=============================
+
+Foo Bar -- Biz Baz
+-Bar-Foo- <- -Baz-Biz-
+
+---
+
+(source_file
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+)
+
+==================
+Inline connection
+==================
+
+foo--bar->biz->baz
+
+---
+
+(source_file
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+    (arrow)
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+)

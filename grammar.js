@@ -12,12 +12,7 @@ module.exports = grammar({
     _end: ($) => choice(";", "\n"),
 
     connection: ($) =>
-      seq(
-        field("left", $.identifier),
-        $.arrow,
-        field("right", $.identifier),
-        $._end
-      ),
+      seq($.identifier, repeat1(seq($.arrow, $.identifier)), $._end),
 
     shape: ($) => seq($.identifier, optional(seq(":", $.label)), $._end),
 
