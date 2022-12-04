@@ -76,6 +76,14 @@
       "required": true,
       "types": [
         {
+          "type": "attr_key",
+          "named": true
+        },
+        {
+          "type": "attr_value",
+          "named": true
+        },
+        {
           "type": "dot",
           "named": true
         },
@@ -108,14 +116,6 @@
         },
         {
           "type": "connection",
-          "named": true
-        },
-        {
-          "type": "dot",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         },
         {

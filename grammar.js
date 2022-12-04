@@ -7,18 +7,13 @@ module.exports = grammar({
     // TODO: add the actual grammar rules
     source_file: ($) => repeat($._definition),
 
-    _definition: ($) =>
-      choice(
-        choice($._root_attribute, $._shape_attribute),
-        $.connection,
-        $.shape
-      ),
+    _definition: ($) => choice($._root_attribute, $.connection, $.shape),
 
     connection: ($) =>
       seq(
         $.identifier,
         choice(
-          seq(seq($.arrow, $.identifier, ":", $.label)),
+          seq(seq($.arrow, $.identifier, $._colon, $.label)),
           seq(repeat1(seq($.arrow, $.identifier)))
         ),
         $._end
@@ -28,7 +23,10 @@ module.exports = grammar({
       seq(
         $.identifier,
         repeat(seq($.dot, $.identifier)),
-        optional(seq(":", $.label)),
+        choice(
+          optional(seq($.dot, $._shape_attribute)),
+          optional(seq($._colon, $.label))
+        ),
         $._end
       ),
 
@@ -39,12 +37,7 @@ module.exports = grammar({
     attr_value: ($) => choice($.string, $._unquoted_string),
 
     _root_attribute: ($) =>
-      seq(
-        alias($._root_attr_key, $.attr_key),
-        ":",
-        alias($.label, $.attr_value),
-        $._end
-      ),
+      seq(alias($._root_attr_key, $.attr_key), $._colon, $.attr_value, $._end),
 
     _root_attr_key: ($) => "direction",
 
@@ -53,19 +46,14 @@ module.exports = grammar({
         alias("style", $.attr_key),
         $.dot,
         alias($._style_attr_key, $.attr_key),
-        ":",
-        $.attr_value,
-        $._end
+        $._colon,
+        $.attr_value
       ),
 
     _shape_attribute: ($) =>
-      seq(
-        $.identifier,
-        $.dot,
-        choice(
-          seq(alias($._shape_attr_key, $.attr_key), ":", $.attr_value, $._end),
-          $._style_attribute
-        )
+      choice(
+        seq(alias($._shape_attr_key, $.attr_key), $._colon, $.attr_value),
+        $._style_attribute
       ),
 
     _shape_attr_key: ($) =>
@@ -114,6 +102,8 @@ module.exports = grammar({
         )
       ),
 
+    _colon: ($) => seq(repeat(" "), ":", repeat(" ")),
+
     _dash: ($) => token.immediate("-"),
 
     _word: ($) => /[\w\d]+/,
@@ -128,13 +118,13 @@ module.exports = grammar({
         )
       ),
 
-    _unquoted_string: ($) => /[^\n;{]+/,
+    _unquoted_string: ($) => token.immediate(/[^'"`\n;{]+/),
 
     string: ($) =>
       choice(
-        seq("'", repeat(token(/[^'\n]+/)), "'"),
-        seq('"', repeat(token(/[^'\n]+/)), '"'),
-        seq("`", repeat(token(/[^'\n]+/)), "`")
+        seq("'", repeat(token.immediate(/[^'\n]+/)), "'"),
+        seq('"', repeat(token.immediate(/[^"\n]+/)), '"'),
+        seq("`", repeat(token.immediate(/[^`\n]+/)), "`")
       ),
 
     _end: ($) => choice(";", "\n", "\0"),

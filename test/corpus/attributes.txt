@@ -15,11 +15,13 @@ Inline shape attribute
 ==================
 
 foo.shape: oval
+foo.bar.baz.shape: oval
 
 ---
 
 (source_file
-  (identifier) (dot) (attr_key) (attr_value)
+  (shape (identifier) (dot) (attr_key) (attr_value))
+  (shape (identifier) (dot) (identifier) (dot) (identifier) (dot) (attr_key) (attr_value))
 )
 
 ==================
@@ -31,7 +33,7 @@ foo.style.opacity: 5
 ---
 
 (source_file
-  (identifier) (dot) (attr_key) (dot) (attr_key) (attr_value)
+  (shape (identifier) (dot) (attr_key) (dot) (attr_key) (attr_value))
 )
 
 
