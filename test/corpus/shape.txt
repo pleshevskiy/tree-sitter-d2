@@ -26,6 +26,22 @@ Complex identifier
   (shape (identifier))
 )
 
+==================
+Inline shapes
+==================
+
+foo.baz
+
+---
+
+(source_file
+  (shape
+    (identifier)
+    (dot)
+    (identifier)
+  )
+)
+
 
 ==================
 Many shapes inline

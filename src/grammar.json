@@ -107,6 +107,22 @@
           "name": "identifier"
         },
         {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "dot"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            ]
+          }
+        },
+        {
           "type": "CHOICE",
           "members": [
             {
@@ -133,6 +149,10 @@
         }
       ]
     },
+    "dot": {
+      "type": "STRING",
+      "value": "."
+    },
     "label": {
       "type": "CHOICE",
       "members": [
@@ -141,8 +161,8 @@
           "name": "string"
         },
         {
-          "type": "PATTERN",
-          "value": "[^\\n;{]+"
+          "type": "SYMBOL",
+          "name": "_unquoted_string"
         }
       ]
     },
@@ -222,6 +242,10 @@
           ]
         }
       ]
+    },
+    "_unquoted_string": {
+      "type": "PATTERN",
+      "value": "[^\\n;{]+"
     },
     "string": {
       "type": "CHOICE",

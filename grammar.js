@@ -21,9 +21,17 @@ module.exports = grammar({
         $._end
       ),
 
-    shape: ($) => seq($.identifier, optional(seq(":", $.label)), $._end),
+    shape: ($) =>
+      seq(
+        $.identifier,
+        repeat(seq($.dot, $.identifier)),
+        optional(seq(":", $.label)),
+        $._end
+      ),
 
-    label: ($) => choice($.string, /[^\n;{]+/),
+    dot: ($) => ".",
+
+    label: ($) => choice($.string, $._unquoted_string),
 
     identifier: ($) => $._identifier,
 
@@ -34,6 +42,8 @@ module.exports = grammar({
         seq("<-", repeat("-"), ">"),
         seq(repeat("-"), "->")
       ),
+
+    _unquoted_string: ($) => /[^\n;{]+/,
 
     string: ($) =>
       choice(

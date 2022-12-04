@@ -28,6 +28,7 @@ static bool scan_identifier(TSLexer *lexer) {
         case ':':
         case ';':
         case '<':
+        case '.':
         case '\n':
         case '\0':
           return has_content;
