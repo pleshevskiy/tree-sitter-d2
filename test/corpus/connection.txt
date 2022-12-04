@@ -32,6 +32,41 @@ biz<-baz
   )
 )
 
+==================
+Formatted connection
+==================
+
+foo -- bar
+biz -> baz
+biz <-> baz
+biz <- baz
+
+---
+
+(source_file
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+)
+
+
 =============================
 Complex identifier connection
 =============================

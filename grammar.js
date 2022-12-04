@@ -1,8 +1,6 @@
 module.exports = grammar({
   name: "d2",
 
-  externals: ($) => [$._identifier],
-
   rules: {
     // TODO: add the actual grammar rules
     source_file: ($) => repeat($._definition),
@@ -35,12 +33,32 @@ module.exports = grammar({
 
     identifier: ($) => $._identifier,
 
+    _identifier: ($) =>
+      prec.right(
+        seq(
+          repeat(" "),
+          optional($._dash),
+          choice(
+            $._word,
+            repeat1(seq($._word, choice(repeat(" "), $._dash), $._word))
+          ),
+          optional($._dash),
+          repeat(" ")
+        )
+      ),
+
+    _dash: ($) => token.immediate("-"),
+
+    _word: ($) => /[\w\d]+/,
+
     arrow: ($) =>
-      choice(
-        seq("--", repeat("-")),
-        seq("<-", repeat("-")),
-        seq("<-", repeat("-"), ">"),
-        seq(repeat("-"), "->")
+      prec.left(
+        choice(
+          seq("--", repeat($._dash)),
+          seq("<-", repeat($._dash)),
+          seq("<-", repeat($._dash), ">"),
+          seq(repeat($._dash), "->")
+        )
       ),
 
     _unquoted_string: ($) => /[^\n;{]+/,
