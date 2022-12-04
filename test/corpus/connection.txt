@@ -75,6 +75,27 @@ foo--bar->biz->baz
 )
 
 ==================
+Many connections inline
+==================
+
+foo--bar;biz->baz
+
+---
+
+(source_file
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+  (connection
+    (identifier)
+    (arrow)
+    (identifier)
+  )
+)
+
+==================
 Descripted connection
 ==================
 

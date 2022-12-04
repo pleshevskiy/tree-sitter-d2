@@ -28,7 +28,7 @@ Complex identifier
 
 
 ==================
-Inline shapes
+Many shapes inline
 ==================
 
 a;b;c
