@@ -1,7 +1,6 @@
 ==================
 Root attribute
 ==================
-
 direction: value
 
 ---
@@ -13,7 +12,6 @@ direction: value
 ==================
 Inline shape attribute
 ==================
-
 foo.shape: oval
 foo.bar.baz.shape: oval
 
@@ -27,7 +25,6 @@ foo.bar.baz.shape: oval
 ==================
 Inline style attribute
 ==================
-
 foo.style.opacity: 5
 
 ---

@@ -1,7 +1,6 @@
 ==================
 Simple connection
 ==================
-
 foo--bar
 biz->baz
 biz<->baz
@@ -35,7 +34,6 @@ biz<-baz
 ==================
 Formatted connection
 ==================
-
 foo -- bar
 biz -> baz
 biz <-> baz
@@ -70,7 +68,6 @@ biz <- baz
 =============================
 Complex identifier connection
 =============================
-
 Foo Bar -- Biz Baz
 -Bar-Foo- <- -Baz-Biz-
 
@@ -92,7 +89,6 @@ Foo Bar -- Biz Baz
 ==================
 Inline connection
 ==================
-
 foo--bar->biz->baz
 
 ---
@@ -112,7 +108,6 @@ foo--bar->biz->baz
 ==================
 Many connections inline
 ==================
-
 foo--bar;biz->baz
 
 ---
@@ -133,7 +128,6 @@ foo--bar;biz->baz
 ==================
 Descripted connection
 ==================
-
 foo--bar: Question?
 bar->baz: Yes
 

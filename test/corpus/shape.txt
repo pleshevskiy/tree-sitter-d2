@@ -1,7 +1,6 @@
 ==================
 Simple shape
 ==================
-
 foo
 bar
 
@@ -15,7 +14,6 @@ bar
 ==================
 Complex identifier
 ==================
-
  Foo bar 
 -Biz-baz-
 
@@ -29,7 +27,6 @@ Complex identifier
 ==================
 Inline shapes
 ==================
-
 foo.baz
 
 ---
@@ -46,7 +43,6 @@ foo.baz
 ==================
 Many shapes inline
 ==================
-
 a;b;c
 
 ---
@@ -60,9 +56,7 @@ a;b;c
 ==================
 Aliased shapes
 ==================
-
 a: Foo Bar
-
 a: Foo Bar; b: Biz Baz
 
 ---

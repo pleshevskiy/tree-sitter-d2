@@ -1,6 +1,8 @@
 module.exports = grammar({
   name: "d2",
 
+  extras: ($) => [],
+
   word: ($) => $._word,
 
   rules: {
