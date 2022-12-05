@@ -1,3 +1,6 @@
-foo.shape: 'oval'
-foo.bar.baz.shape: oval
+
+
+foo
+
+bar   :  Foo Bar;     baz
 

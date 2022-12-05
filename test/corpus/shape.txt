@@ -67,3 +67,19 @@ a: Foo Bar; b: Biz Baz
   (shape (identifier) (label))
 )
 
+================================================================================
+It should skip white spaces
+================================================================================
+
+foo
+
+bar   :  Foo Bar;     baz
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shape (identifier))
+  (shape (identifier) (label))
+  (shape (identifier))
+)
+

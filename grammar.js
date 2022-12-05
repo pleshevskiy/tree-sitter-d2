@@ -9,7 +9,8 @@ module.exports = grammar({
   rules: {
     source_file: ($) => repeat($._definition),
 
-    _definition: ($) => choice($._root_attribute, $.connection, $.shape),
+    _definition: ($) =>
+      choice($._end, $._root_attribute, $.connection, $.shape),
 
     connection: ($) =>
       seq(
@@ -108,8 +109,6 @@ module.exports = grammar({
 
     _colon: ($) => seq(repeat(" "), ":", repeat(" ")),
 
-    _dash: ($) => token.immediate("-"),
-
     _word: ($) => /[\w\d]+/,
 
     arrow: ($) =>
@@ -122,6 +121,8 @@ module.exports = grammar({
         )
       ),
 
+    _dash: ($) => token.immediate("-"),
+
     _unquoted_string: ($) => token.immediate(/[^'"`\n;{]+/),
 
     string: ($) =>
@@ -132,7 +133,7 @@ module.exports = grammar({
       ),
 
     _eof: ($) => choice("\n", "\0"),
-    _end: ($) => choice(";", $._eof),
+    _end: ($) => seq(repeat(" "), choice(";", $._eof)),
 
     dot: ($) => ".",
   },
