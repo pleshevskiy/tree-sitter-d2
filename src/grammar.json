@@ -53,15 +53,33 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
+              "type": "CHOICE",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "_colon"
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "dot"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_connection_attribute"
+                    }
+                  ]
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "label"
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_colon"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "label"
+                    }
+                  ]
                 }
               ]
             },
@@ -119,14 +137,6 @@
                   ]
                 },
                 {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
                   "type": "SEQ",
                   "members": [
                     {
@@ -138,11 +148,11 @@
                       "name": "label"
                     }
                   ]
-                },
-                {
-                  "type": "BLANK"
                 }
               ]
+            },
+            {
+              "type": "BLANK"
             }
           ]
         },
@@ -275,6 +285,28 @@
         {
           "type": "SYMBOL",
           "name": "_style_attribute"
+        }
+      ]
+    },
+    "_connection_attribute": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_connection_attr_key"
+          },
+          "named": true,
+          "value": "attr_key"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_colon"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "attr_value"
         }
       ]
     },

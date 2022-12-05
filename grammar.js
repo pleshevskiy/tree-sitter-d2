@@ -13,7 +13,9 @@ module.exports = grammar({
       seq(
         $.identifier,
         repeat1(seq($.arrow, $.identifier)),
-        optional(seq($._colon, $.label)),
+        optional(
+          choice(seq($.dot, $._connection_attribute), seq($._colon, $.label))
+        ),
         $._end
       ),
 
@@ -21,9 +23,8 @@ module.exports = grammar({
       seq(
         $.identifier,
         repeat(seq($.dot, $.identifier)),
-        choice(
-          optional(seq($.dot, $._shape_attribute)),
-          optional(seq($._colon, $.label))
+        optional(
+          choice(seq($.dot, $._shape_attribute), seq($._colon, $.label))
         ),
         $._end
       ),
@@ -53,6 +54,9 @@ module.exports = grammar({
         seq(alias($._shape_attr_key, $.attr_key), $._colon, $.attr_value),
         $._style_attribute
       ),
+
+    _connection_attribute: ($) =>
+      seq(alias($._connection_attr_key, $.attr_key), $._colon, $.attr_value),
 
     _shape_attr_key: ($) =>
       choice(
