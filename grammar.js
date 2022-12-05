@@ -12,10 +12,8 @@ module.exports = grammar({
     connection: ($) =>
       seq(
         $.identifier,
-        choice(
-          seq(seq($.arrow, $.identifier, $._colon, $.label)),
-          seq(repeat1(seq($.arrow, $.identifier)))
-        ),
+        repeat1(seq($.arrow, $.identifier)),
+        optional(seq($._colon, $.label)),
         $._end
       ),
 
