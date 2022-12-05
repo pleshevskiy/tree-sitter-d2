@@ -30,9 +30,9 @@ module.exports = grammar({
         $._end
       ),
 
-    label: ($) => choice($.string, $._unquoted_string),
-
     identifier: ($) => $._identifier,
+
+    label: ($) => choice($.string, $._unquoted_string),
 
     attr_value: ($) => choice($.string, $._unquoted_string),
 

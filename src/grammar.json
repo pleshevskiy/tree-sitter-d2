@@ -167,6 +167,10 @@
         }
       ]
     },
+    "identifier": {
+      "type": "SYMBOL",
+      "name": "_identifier"
+    },
     "label": {
       "type": "CHOICE",
       "members": [
@@ -179,10 +183,6 @@
           "name": "_unquoted_string"
         }
       ]
-    },
-    "identifier": {
-      "type": "SYMBOL",
-      "name": "_identifier"
     },
     "attr_value": {
       "type": "CHOICE",
