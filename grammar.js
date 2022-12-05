@@ -1,12 +1,12 @@
 module.exports = grammar({
   name: "d2",
 
+  // TODO: handle empty lines
   extras: ($) => [],
 
   word: ($) => $._word,
 
   rules: {
-    // TODO: add the actual grammar rules
     source_file: ($) => repeat($._definition),
 
     _definition: ($) => choice($._root_attribute, $.connection, $.shape),
@@ -131,7 +131,8 @@ module.exports = grammar({
         seq("`", repeat(token.immediate(/[^`\n]+/)), "`")
       ),
 
-    _end: ($) => choice(";", "\n", "\0"),
+    _eof: ($) => choice("\n", "\0"),
+    _end: ($) => choice(";", $._eof),
 
     dot: ($) => ".",
   },

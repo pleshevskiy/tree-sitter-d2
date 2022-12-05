@@ -689,6 +689,19 @@
         }
       ]
     },
+    "_eof": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "STRING",
+          "value": "\u0000"
+        }
+      ]
+    },
     "_end": {
       "type": "CHOICE",
       "members": [
@@ -697,12 +710,8 @@
           "value": ";"
         },
         {
-          "type": "STRING",
-          "value": "\n"
-        },
-        {
-          "type": "STRING",
-          "value": "\u0000"
+          "type": "SYMBOL",
+          "name": "_eof"
         }
       ]
     },
