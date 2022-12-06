@@ -1,6 +1,5 @@
-
-
-foo
-
-bar   :  Foo Bar;     baz
+foo -- bar
+biz -> baz
+biz <-> baz
+biz <- baz
 

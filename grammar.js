@@ -1,10 +1,13 @@
+const spaces = repeat(" ");
+
 module.exports = grammar({
   name: "d2",
 
-  // TODO: handle empty lines
   extras: ($) => [],
 
   word: ($) => $._word,
+
+  conflicts: ($) => [[$.identifier], [$.arrow]],
 
   rules: {
     source_file: ($) => repeat($._definition),
@@ -14,8 +17,8 @@ module.exports = grammar({
 
     connection: ($) =>
       seq(
-        $.identifier,
-        repeat1(seq($.arrow, $.identifier)),
+        $._identifier,
+        repeat1(seq($._arrow, $._identifier)),
         optional(
           choice(seq($.dot, $._connection_attribute), seq($._colon, $.label))
         ),
@@ -24,15 +27,13 @@ module.exports = grammar({
 
     shape: ($) =>
       seq(
-        $.identifier,
-        repeat(seq($.dot, $.identifier)),
+        $._identifier,
+        repeat(seq($.dot, $._identifier)),
         optional(
           choice(seq($.dot, $._shape_attribute), seq($._colon, $.label))
         ),
         $._end
       ),
-
-    identifier: ($) => $._identifier,
 
     label: ($) => choice($.string, $._unquoted_string),
 
@@ -93,35 +94,33 @@ module.exports = grammar({
 
     _connection_attr_key: ($) => choice("source-arrowhead", "target-arrowhead"),
 
-    _identifier: ($) =>
-      prec.right(
-        seq(
-          repeat(" "),
-          optional($._dash),
-          choice(
-            $._word,
-            repeat1(seq($._word, choice(repeat(" "), $._dash), $._word))
-          ),
-          optional($._dash),
-          repeat(" ")
-        )
+    _identifier: ($) => seq(spaces, $.identifier),
+
+    identifier: ($) =>
+      seq(
+        optional($._dash),
+        choice(
+          $._word,
+          repeat1(seq($._word, choice(spaces, $._dash), $._word))
+        ),
+        optional($._dash)
       ),
 
-    _colon: ($) => seq(repeat(" "), ":", repeat(" ")),
+    _colon: ($) => seq(spaces, ":", spaces),
 
-    _word: ($) => /[\w\d]+/,
+    _arrow: ($) => seq(spaces, $.arrow),
 
     arrow: ($) =>
-      prec.left(
-        choice(
-          seq("--", repeat($._dash)),
-          seq("<-", repeat($._dash)),
-          seq("<-", repeat($._dash), ">"),
-          seq(repeat($._dash), "->")
-        )
+      choice(
+        seq("--", repeat($._dash)),
+        seq("<-", repeat($._dash)),
+        seq("<-", repeat($._dash), ">"),
+        seq(repeat($._dash), "->")
       ),
 
     _dash: ($) => token.immediate("-"),
+
+    dot: ($) => token.immediate("."),
 
     _unquoted_string: ($) => token.immediate(/[^'"`\n;{]+/),
 
@@ -132,9 +131,9 @@ module.exports = grammar({
         seq("`", repeat(token.immediate(/[^`\n]+/)), "`")
       ),
 
-    _eof: ($) => choice("\n", "\0"),
-    _end: ($) => seq(repeat(" "), choice(";", $._eof)),
+    _word: ($) => /[\w\d]+/,
 
-    dot: ($) => ".",
+    _eof: ($) => choice("\n", "\0"),
+    _end: ($) => seq(spaces, choice(";", $._eof)),
   },
 });
