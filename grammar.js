@@ -8,20 +8,21 @@ module.exports = grammar({
   word: ($) => $._word,
 
   conflicts: ($) => [
-    [$._identifier],
     [$.identifier],
     [$.arrow],
+    [$._identifier],
     [$._shape_block],
     [$._shape_block_definition],
     [$._style_attr_block],
     [$._inner_style_attribute],
+    [$._emptyline],
   ],
 
   rules: {
     source_file: ($) => repeat($._definition),
 
     _definition: ($) =>
-      choice(seq(spaces, $._eof), $._root_attribute, $.connection, $.shape),
+      choice($._emptyline, $._root_attribute, $.connection, $.shape),
 
     connection: ($) =>
       seq(
@@ -64,9 +65,7 @@ module.exports = grammar({
         spaces,
         "{",
         spaces,
-        repeat(
-          choice(seq(spaces, $._eof), seq($._shape_block_definition, $._end))
-        ),
+        repeat(choice($._emptyline, seq($._shape_block_definition, $._end))),
         optional(seq($._shape_block_definition, optional($._end))),
         spaces,
         "}"
@@ -95,7 +94,7 @@ module.exports = grammar({
         spaces,
         "{",
         spaces,
-        repeat(choice($._eof, seq($._inner_style_attribute, $._end))),
+        repeat(choice($._emptyline, seq($._inner_style_attribute, $._end))),
         optional(seq($._inner_style_attribute, optional($._end))),
         spaces,
         "}"
@@ -178,6 +177,7 @@ module.exports = grammar({
 
     _word: ($) => /[\w\d]+/,
 
+    _emptyline: ($) => seq(spaces, $._eof),
     _eof: ($) => choice("\n", "\0"),
     _end: ($) => seq(spaces, choice(";", $._eof)),
   },

@@ -13,20 +13,8 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "STRING",
-                "value": " "
-              }
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_eof"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_emptyline"
         },
         {
           "type": "SYMBOL",
@@ -298,20 +286,8 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "STRING",
-                      "value": " "
-                    }
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "_eof"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "_emptyline"
               },
               {
                 "type": "SEQ",
@@ -497,7 +473,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_eof"
+                "name": "_emptyline"
               },
               {
                 "type": "SEQ",
@@ -997,6 +973,22 @@
       "type": "PATTERN",
       "value": "[\\w\\d]+"
     },
+    "_emptyline": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "STRING",
+            "value": " "
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_eof"
+        }
+      ]
+    },
     "_eof": {
       "type": "CHOICE",
       "members": [
@@ -1039,13 +1031,13 @@
   "extras": [],
   "conflicts": [
     [
-      "_identifier"
-    ],
-    [
       "identifier"
     ],
     [
       "arrow"
+    ],
+    [
+      "_identifier"
     ],
     [
       "_shape_block"
@@ -1058,6 +1050,9 @@
     ],
     [
       "_inner_style_attribute"
+    ],
+    [
+      "_emptyline"
     ]
   ],
   "precedences": [],
