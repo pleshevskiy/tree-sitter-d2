@@ -106,3 +106,27 @@ foo: {
     ))
   ))
 )
+
+================================================================================
+Aliased shape block
+================================================================================
+
+foo: Foo {
+  bar: Bar {
+    baz: Baz {
+      biz: Biz
+    }
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shape (identifier) (label) (block
+    (shape (identifier) (label) (block
+      (shape (identifier) (label) (block
+        (shape (identifier) (label))
+      ))
+    ))
+  ))
+)
