@@ -25,6 +25,25 @@
     }
   },
   {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attr_key",
+          "named": true
+        },
+        {
+          "type": "attr_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "connection",
     "named": true,
     "fields": {},
@@ -93,6 +112,10 @@
         },
         {
           "type": "attr_value",
+          "named": true
+        },
+        {
+          "type": "block",
           "named": true
         },
         {
@@ -272,6 +295,14 @@
   },
   {
     "type": "width",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
     "named": false
   }
 ]

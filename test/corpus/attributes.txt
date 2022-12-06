@@ -33,6 +33,52 @@ foo.style.opacity: 5
   (shape (identifier) (dot) (attr_key) (dot) (attr_key) (attr_value))
 )
 
+================================================================================
+Block style attributes
+================================================================================
+foo.style: {
+  opacity: 5
+  fill: red;
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shape
+    (identifier) (dot) (attr_key)
+    (block
+      (attr_key) (attr_value)
+      (attr_key) (attr_value)
+    )
+  )
+)
+
+================================================================================
+Inline block style attributes
+================================================================================
+foo.style: { opacity: 5; fill: red; }
+foo.style: { opacity: 5 }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shape
+    (identifier) (dot) (attr_key)
+    (block
+      (attr_key) (attr_value)
+      (attr_key) (attr_value)
+    )
+  )
+  (shape
+    (identifier) (dot) (attr_key)
+    (block
+      (attr_key) (attr_value)
+    )
+  )
+)
+
+
+
 
 
 

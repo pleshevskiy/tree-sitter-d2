@@ -7,7 +7,12 @@ module.exports = grammar({
 
   word: ($) => $._word,
 
-  conflicts: ($) => [[$.identifier], [$.arrow]],
+  conflicts: ($) => [
+    [$.identifier],
+    [$.arrow],
+    [$._style_attr_block],
+    [$._inner_style_attribute],
+  ],
 
   rules: {
     source_file: ($) => repeat($._definition),
@@ -37,27 +42,41 @@ module.exports = grammar({
 
     label: ($) => choice($.string, $._unquoted_string),
 
-    attr_value: ($) => choice($.string, $._unquoted_string),
+    attr_value: ($) => seq(spaces, choice($.string, $._unquoted_string)),
 
     _root_attribute: ($) =>
       seq(alias($._root_attr_key, $.attr_key), $._colon, $.attr_value, $._end),
 
     _root_attr_key: ($) => "direction",
 
-    _style_attribute: ($) =>
-      seq(
-        alias("style", $.attr_key),
-        $.dot,
-        alias($._style_attr_key, $.attr_key),
-        $._colon,
-        $.attr_value
-      ),
-
     _shape_attribute: ($) =>
       choice(
         seq(alias($._shape_attr_key, $.attr_key), $._colon, $.attr_value),
         $._style_attribute
       ),
+
+    _style_attribute: ($) =>
+      seq(
+        alias("style", $.attr_key),
+        choice(
+          seq($.dot, $._inner_style_attribute),
+          seq($._colon, alias($._style_attr_block, $.block))
+        )
+      ),
+
+    _style_attr_block: ($) =>
+      seq(
+        spaces,
+        "{",
+        spaces,
+        repeat(choice($._eof, seq($._inner_style_attribute, $._end))),
+        optional(seq($._inner_style_attribute, optional($._end))),
+        spaces,
+        "}"
+      ),
+
+    _inner_style_attribute: ($) =>
+      seq(spaces, alias($._style_attr_key, $.attr_key), $._colon, $.attr_value),
 
     _connection_attribute: ($) =>
       seq(alias($._connection_attr_key, $.attr_key), $._colon, $.attr_value),
@@ -106,7 +125,7 @@ module.exports = grammar({
         optional($._dash)
       ),
 
-    _colon: ($) => seq(spaces, ":", spaces),
+    _colon: ($) => seq(spaces, ":"),
 
     _arrow: ($) => seq(spaces, $.arrow),
 
@@ -122,7 +141,7 @@ module.exports = grammar({
 
     dot: ($) => token.immediate("."),
 
-    _unquoted_string: ($) => token.immediate(/[^'"`\n;{]+/),
+    _unquoted_string: ($) => token.immediate(/[^'"`\n;{}]+/),
 
     string: ($) =>
       choice(

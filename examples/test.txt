@@ -1,5 +1,2 @@
-foo -- bar
-biz -> baz
-biz <-> baz
-biz <- baz
+foo.style: { opacity: 5; fill: red }
 
