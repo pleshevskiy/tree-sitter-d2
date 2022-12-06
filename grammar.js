@@ -8,8 +8,11 @@ module.exports = grammar({
   word: ($) => $._word,
 
   conflicts: ($) => [
+    [$._identifier],
     [$.identifier],
     [$.arrow],
+    [$._shape_block],
+    [$._shape_block_definition],
     [$._style_attr_block],
     [$._inner_style_attribute],
   ],
@@ -18,7 +21,7 @@ module.exports = grammar({
     source_file: ($) => repeat($._definition),
 
     _definition: ($) =>
-      choice($._end, $._root_attribute, $.connection, $.shape),
+      choice(seq(spaces, $._eof), $._root_attribute, $.connection, $.shape),
 
     connection: ($) =>
       seq(
@@ -35,7 +38,14 @@ module.exports = grammar({
         $._identifier,
         repeat(seq($.dot, $._identifier)),
         optional(
-          choice(seq($.dot, $._shape_attribute), seq($._colon, $.label))
+          choice(
+            seq($.dot, $._shape_attribute),
+            seq(
+              $._colon,
+              optional($.label),
+              optional(alias($._shape_block, $.block))
+            )
+          )
         ),
         $._end
       ),
@@ -48,6 +58,22 @@ module.exports = grammar({
       seq(alias($._root_attr_key, $.attr_key), $._colon, $.attr_value, $._end),
 
     _root_attr_key: ($) => "direction",
+
+    _shape_block: ($) =>
+      seq(
+        spaces,
+        "{",
+        spaces,
+        repeat(
+          choice(seq(spaces, $._eof), seq($._shape_block_definition, $._end))
+        ),
+        optional(seq($._shape_block_definition, optional($._end))),
+        spaces,
+        "}"
+      ),
+
+    _shape_block_definition: ($) =>
+      choice($.connection, $.shape, $._shape_attribute),
 
     _shape_attribute: ($) =>
       choice(

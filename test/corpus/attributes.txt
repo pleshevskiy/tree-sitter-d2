@@ -38,6 +38,7 @@ Block style attributes
 ================================================================================
 foo.style: {
   opacity: 5
+
   fill: red;
 }
 
@@ -76,9 +77,4 @@ foo.style: { opacity: 5 }
     )
   )
 )
-
-
-
-
-
 

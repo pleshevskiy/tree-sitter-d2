@@ -39,6 +39,22 @@
         {
           "type": "attr_value",
           "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "connection",
+          "named": true
+        },
+        {
+          "type": "dot",
+          "named": true
+        },
+        {
+          "type": "shape",
+          "named": true
         }
       ]
     }
