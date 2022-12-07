@@ -15,5 +15,5 @@ init:
 	fi
 	
 	if [ -z $$(jq '."parser-directories"' $(TS_CONF) | grep $$(dirname $$PWD) ) ]; then \
-		jq ".\"parser-directories\" |= . + [\"$$(dirname $$PWD)\"]" $(TS_CONF) > $(TS_CONF); \
+		cat <<< $$(jq ".\"parser-directories\" |= . + [\"$$(dirname $(PWD))\"]" $(TS_CONF)) > $(TS_CONF); \
 	fi
