@@ -12,6 +12,7 @@
       {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
+            jq
             nodejs-18_x
             tree-sitter
             nodePackages.eslint
