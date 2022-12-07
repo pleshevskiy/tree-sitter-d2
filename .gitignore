@@ -1,3 +1,6 @@
 # direnv
 .envrc
 .direnv
+
+# produced by d2
+*.svg
