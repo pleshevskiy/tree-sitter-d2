@@ -26,7 +26,7 @@ foo: {
   (shape_key)
   (block
     (attr_key) (attr_value)
-    (shape_key) (dot) (shape_key) (dot) (shape_key)
+    (container_key) (dot) (container_key) (dot) (shape_key)
     (block
       (attr_key) (attr_value)
     )
@@ -44,7 +44,7 @@ foo.bar.baz.shape: oval
 
 (source_file
   (shape_key) (dot) (attr_key) (attr_value)
-  (shape_key) (dot) (shape_key) (dot) (shape_key) (dot) (attr_key) (attr_value)
+  (container_key) (dot) (container_key) (dot) (shape_key) (dot) (attr_key) (attr_value)
 )
 
 ================================================================================

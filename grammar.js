@@ -11,7 +11,6 @@ module.exports = grammar({
     [$.shape_key],
     [$.arrow],
     [$._shape_path],
-    [$._shape_key],
     [$._shape_block],
     [$._shape_block_definition],
     [$._style_attr_block],
@@ -47,7 +46,7 @@ module.exports = grammar({
           choice(
             seq($.dot, $._shape_attribute),
             seq(
-              optional(seq($._colon, optional($.label))),
+              optional(seq($._colon, optional(seq(spaces, $.label)))),
               optional(alias($._shape_block, $.block))
             )
           )
@@ -56,9 +55,23 @@ module.exports = grammar({
       ),
 
     _shape_path: ($) =>
+      seq(
+        spaces,
+        repeat(seq(alias($.shape_key, $.container_key), spaces, $.dot, spaces)),
+        $.shape_key
+      ),
+
+    shape_key: ($) =>
       choice(
-        $._shape_key,
-        seq($._shape_key, repeat1(seq($.dot, $._shape_key)))
+        $.string,
+        seq(
+          optional($._dash),
+          choice(
+            $._word,
+            repeat1(seq($._word, choice(repeat1(" "), $._dash), $._word))
+          ),
+          optional($._dash)
+        )
       ),
 
     label: ($) => choice($.string, $._unquoted_string),
@@ -156,21 +169,6 @@ module.exports = grammar({
     _text_attr_key: ($) => "near",
 
     _connection_attr_key: ($) => choice("source-arrowhead", "target-arrowhead"),
-
-    _shape_key: ($) => seq(spaces, $.shape_key),
-
-    shape_key: ($) =>
-      choice(
-        $.string,
-        seq(
-          optional($._dash),
-          choice(
-            $._word,
-            repeat1(seq($._word, choice(repeat1(" "), $._dash), $._word))
-          ),
-          optional($._dash)
-        )
-      ),
 
     _colon: ($) => seq(spaces, ":"),
 

@@ -5,14 +5,16 @@
 (invalid (_) @error)
 ;-------------------------------------------------------------------------------
 
+(container_key) @constant
 (shape_key) @variable
-(attr_key) @keyword
+(attr_key) @property
 
 ; Literals
 ;-------------------------------------------------------------------------------
 
-(string) @string
-(label) @string
+(container_key (string) @string.special)
+(shape_key (string) @string)
+(label) @string 
 (attr_value) @string
 
 ; Comments
@@ -26,6 +28,7 @@
 (arrow) @operator
 
 [
+  (dot)
   ":"
   ";"
 ] @punctuation.delimiter

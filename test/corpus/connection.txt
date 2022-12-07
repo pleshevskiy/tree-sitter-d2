@@ -149,7 +149,7 @@ bar -> baz: Yes
 )
 
 ================================================================================
-Connection using shape path
+Connection of shapes inside a containers
 ================================================================================
 foo.biz.baz -> bar.baz.biz: Label
 
@@ -157,9 +157,9 @@ foo.biz.baz -> bar.baz.biz: Label
 
 (source_file
   (connection
-    (shape_key) (dot) (shape_key) (dot) (shape_key)
+    (container_key) (dot) (container_key) (dot) (shape_key)
     (arrow)
-    (shape_key) (dot) (shape_key) (dot) (shape_key)
+    (container_key) (dot) (container_key) (dot) (shape_key)
     (label)
   )
 )
