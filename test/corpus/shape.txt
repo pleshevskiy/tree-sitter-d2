@@ -7,8 +7,8 @@ bar
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (identifier))
-  (shape (identifier))
+  (shape_key)
+  (shape_key)
 )
 
 ================================================================================
@@ -20,37 +20,43 @@ Complex identifier
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (identifier))
-  (shape (identifier))
+  (shape_key)
+  (shape_key)
 )
 
 ================================================================================
-Inline shapes
+Declare a shape inside a container
 ================================================================================
 foo.baz
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape
-    (identifier)
-    (dot)
-    (identifier)
-  )
+  (shape_key) (dot) (shape_key)
 )
 
+================================================================================
+Use quoted string as a shape key
+================================================================================
+'foo'.'baz'
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shape_key (string)) (dot) (shape_key (string))
+)
 
 ================================================================================
-Many shapes inline
+Define multiple shapes using semicolons
 ================================================================================
 a;b;c
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (identifier))
-  (shape (identifier))
-  (shape (identifier))
+  (shape_key)
+  (shape_key)
+  (shape_key)
 )
 
 ================================================================================
@@ -62,9 +68,9 @@ a: Foo Bar; b: Biz Baz
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (identifier) (label))
-  (shape (identifier) (label))
-  (shape (identifier) (label))
+  (shape_key) (label)
+  (shape_key) (label)
+  (shape_key) (label)
 )
 
 ================================================================================
@@ -78,9 +84,9 @@ bar   :  Foo Bar;     baz
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (identifier))
-  (shape (identifier) (label))
-  (shape (identifier))
+  (shape_key)
+  (shape_key) (label)
+  (shape_key)
 )
 
 ================================================================================
@@ -98,13 +104,16 @@ foo: {
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (identifier) (block
-    (shape (identifier) (block
-      (shape (identifier) (block
-        (shape (identifier))
-      ))
-    ))
-  ))
+  (shape_key)
+  (block
+    (shape_key)
+    (block
+      (shape_key)
+      (block
+        (shape_key)
+      )
+    )
+  )
 )
 
 ================================================================================
@@ -122,12 +131,15 @@ foo: Foo {
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (identifier) (label) (block
-    (shape (identifier) (label) (block
-      (shape (identifier) (label) (block
-        (shape (identifier) (label))
-      ))
-    ))
-  ))
+  (shape_key) (label)
+  (block
+    (shape_key) (label)
+    (block
+      (shape_key) (label)
+      (block
+        (shape_key) (label)
+      )
+    )
+  )
 )
 

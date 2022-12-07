@@ -23,12 +23,14 @@ foo: {
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (identifier) (block
+  (shape_key)
+  (block
     (attr_key) (attr_value)
-    (shape (identifier) (dot) (identifier) (dot) (identifier) (block
+    (shape_key) (dot) (shape_key) (dot) (shape_key)
+    (block
       (attr_key) (attr_value)
-    ))
-  ))
+    )
+  )
 )
 
 
@@ -41,8 +43,8 @@ foo.bar.baz.shape: oval
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (identifier) (dot) (attr_key) (attr_value))
-  (shape (identifier) (dot) (identifier) (dot) (identifier) (dot) (attr_key) (attr_value))
+  (shape_key) (dot) (attr_key) (attr_value)
+  (shape_key) (dot) (shape_key) (dot) (shape_key) (dot) (attr_key) (attr_value)
 )
 
 ================================================================================
@@ -53,7 +55,7 @@ foo.style.opacity: 5
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (identifier) (dot) (attr_key) (dot) (attr_key) (attr_value))
+  (shape_key) (dot) (attr_key) (dot) (attr_key) (attr_value)
 )
 
 ================================================================================
@@ -68,12 +70,10 @@ foo.style: {
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape
-    (identifier) (dot) (attr_key)
-    (block
-      (attr_key) (attr_value)
-      (attr_key) (attr_value)
-    )
+  (shape_key) (dot) (attr_key)
+  (block
+    (attr_key) (attr_value)
+    (attr_key) (attr_value)
   )
 )
 
@@ -86,18 +86,14 @@ foo.style: { opacity: 5 }
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape
-    (identifier) (dot) (attr_key)
-    (block
-      (attr_key) (attr_value)
-      (attr_key) (attr_value)
-    )
+  (shape_key) (dot) (attr_key)
+  (block
+    (attr_key) (attr_value)
+    (attr_key) (attr_value)
   )
-  (shape
-    (identifier) (dot) (attr_key)
-    (block
-      (attr_key) (attr_value)
-    )
+  (shape_key) (dot) (attr_key)
+  (block
+    (attr_key) (attr_value)
   )
 )
 

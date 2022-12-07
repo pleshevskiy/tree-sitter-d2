@@ -53,7 +53,11 @@
           "named": true
         },
         {
-          "type": "shape",
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "shape_key",
           "named": true
         }
       ]
@@ -84,20 +88,15 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "label",
           "named": true
         },
         {
-          "type": "label",
+          "type": "shape_key",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "identifier",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "invalid",
@@ -142,35 +141,15 @@
     }
   },
   {
-    "type": "shape",
+    "type": "shape_key",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
         {
-          "type": "attr_key",
-          "named": true
-        },
-        {
-          "type": "attr_value",
-          "named": true
-        },
-        {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "dot",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "label",
+          "type": "string",
           "named": true
         }
       ]
@@ -193,7 +172,15 @@
           "named": true
         },
         {
+          "type": "block",
+          "named": true
+        },
+        {
           "type": "connection",
+          "named": true
+        },
+        {
+          "type": "dot",
           "named": true
         },
         {
@@ -201,7 +188,11 @@
           "named": true
         },
         {
-          "type": "shape",
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "shape_key",
           "named": true
         }
       ]

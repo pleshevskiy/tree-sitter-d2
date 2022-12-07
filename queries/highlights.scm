@@ -5,7 +5,7 @@
 (invalid (_) @error)
 ;-------------------------------------------------------------------------------
 
-(identifier) @variable
+(shape_key) @variable
 (attr_key) @keyword
 
 ; Literals
@@ -26,7 +26,6 @@
 (arrow) @operator
 
 [
-  (dot)
   ":"
   ";"
 ] @punctuation.delimiter

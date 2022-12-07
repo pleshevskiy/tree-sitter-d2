@@ -10,24 +10,24 @@ biz<-baz
 
 (source_file
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
 )
 
@@ -43,24 +43,24 @@ biz <- baz
 
 (source_file
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
 )
 
@@ -75,14 +75,14 @@ Foo Bar -- Biz Baz
 
 (source_file
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
 )
 
@@ -95,13 +95,13 @@ foo--bar->biz->baz
 
 (source_file
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
 )
 
@@ -114,14 +114,14 @@ foo--bar;biz->baz
 
 (source_file
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
   )
 )
 
@@ -135,15 +135,31 @@ bar -> baz: Yes
 
 (source_file
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
     (label)
   )
   (connection
-    (identifier)
+    (shape_key)
     (arrow)
-    (identifier)
+    (shape_key)
+    (label)
+  )
+)
+
+================================================================================
+Connection using shape path
+================================================================================
+foo.biz.baz -> bar.baz.biz: Label
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (connection
+    (shape_key) (dot) (shape_key) (dot) (shape_key)
+    (arrow)
+    (shape_key) (dot) (shape_key) (dot) (shape_key)
     (label)
   )
 )

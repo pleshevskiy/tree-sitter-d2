@@ -8,9 +8,10 @@ module.exports = grammar({
   word: ($) => $._word,
 
   conflicts: ($) => [
-    [$.identifier],
+    [$.shape_key],
     [$.arrow],
-    [$._identifier],
+    [$._shape_path],
+    [$._shape_key],
     [$._shape_block],
     [$._shape_block_definition],
     [$._style_attr_block],
@@ -19,25 +20,29 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: ($) => repeat($._definition),
+    source_file: ($) => repeat($._root_definition),
 
-    _definition: ($) =>
-      choice($._emptyline, $._root_attribute, $.connection, $.shape),
+    _root_definition: ($) =>
+      choice(
+        $._emptyline,
+        $._root_attribute,
+        $.connection,
+        $._shape_definition
+      ),
 
     connection: ($) =>
       seq(
-        $._identifier,
-        repeat1(seq($._arrow, $._identifier)),
+        $._shape_path,
+        repeat1(seq($._arrow, $._shape_path)),
         optional(
           choice(seq($.dot, $._connection_attribute), seq($._colon, $.label))
         ),
         $._end
       ),
 
-    shape: ($) =>
+    _shape_definition: ($) =>
       seq(
-        $._identifier,
-        repeat(seq($.dot, $._identifier)),
+        $._shape_path,
         optional(
           choice(
             seq($.dot, $._shape_attribute),
@@ -48,6 +53,12 @@ module.exports = grammar({
           )
         ),
         $._end
+      ),
+
+    _shape_path: ($) =>
+      choice(
+        $._shape_key,
+        seq($._shape_key, repeat1(seq($.dot, $._shape_key)))
       ),
 
     label: ($) => choice($.string, $._unquoted_string),
@@ -80,7 +91,7 @@ module.exports = grammar({
       ),
 
     _shape_block_definition: ($) =>
-      choice($.connection, $.shape, $._shape_attribute),
+      choice($.connection, $._shape_definition, $._shape_attribute),
 
     _shape_attribute: ($) =>
       choice(
@@ -146,16 +157,19 @@ module.exports = grammar({
 
     _connection_attr_key: ($) => choice("source-arrowhead", "target-arrowhead"),
 
-    _identifier: ($) => seq(spaces, $.identifier),
+    _shape_key: ($) => seq(spaces, $.shape_key),
 
-    identifier: ($) =>
-      seq(
-        optional($._dash),
-        choice(
-          $._word,
-          repeat1(seq($._word, choice(spaces, $._dash), $._word))
-        ),
-        optional($._dash)
+    shape_key: ($) =>
+      choice(
+        $.string,
+        seq(
+          optional($._dash),
+          choice(
+            $._word,
+            repeat1(seq($._word, choice(repeat1(" "), $._dash), $._word))
+          ),
+          optional($._dash)
+        )
       ),
 
     _colon: ($) => seq(spaces, ":"),
