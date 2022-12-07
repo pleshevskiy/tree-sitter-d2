@@ -1,21 +1,22 @@
 foo.baz.biz
 # <- variable
-#  ^ punctuanion.delimiter
+#  ^ punctuation.delimiter
 #   ^ variable
-#      ^ punctuanion.delimiter
+#      ^ punctuation.delimiter
 #       ^ variable
 
 foo: Foo Bar
 # <- variable
-#  ^ punctuanion.delimiter
+#  ^ punctuation.delimiter
 #    ^ string
 
 foo: Foo Bar {
   # <- variable
-  #  ^ label
-  #          ^ punctuation.delimiter
+  #  ^ string
+  #          ^ punctuation.bracket
 
   bar.baz
   # <- variable
   #   ^ variable
 }
+# <- punctuation.bracket
