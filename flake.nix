@@ -18,6 +18,7 @@
             nodePackages.eslint
             nodePackages.prettier
             nodePackages.vscode-langservers-extracted # html, css, json, eslint
+            (import ./dev/nvim-ts.nix { inherit pkgs; })
           ];
         };
       });
