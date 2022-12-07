@@ -527,10 +527,6 @@
                   {
                     "type": "SYMBOL",
                     "name": "_shape_block_definition"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "_end"
                   }
                 ]
               }

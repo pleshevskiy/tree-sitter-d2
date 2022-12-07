@@ -96,9 +96,7 @@ module.exports = grammar({
       seq(
         spaces,
         "{",
-        repeat(
-          choice($._emptyline, seq(spaces, $._shape_block_definition, $._end))
-        ),
+        repeat(choice($._emptyline, seq(spaces, $._shape_block_definition))),
         optional(seq($._shape_block_definition, optional($._end))),
         spaces,
         "}"
