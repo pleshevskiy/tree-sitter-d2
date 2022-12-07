@@ -366,6 +366,13 @@
         }
       ]
     },
+    "_dash": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "-"
+      }
+    },
     "label": {
       "type": "CHOICE",
       "members": [
@@ -1023,13 +1030,6 @@
           "value": "<-+>"
         }
       ]
-    },
-    "_dash": {
-      "type": "IMMEDIATE_TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "-"
-      }
     },
     "dot": {
       "type": "IMMEDIATE_TOKEN",

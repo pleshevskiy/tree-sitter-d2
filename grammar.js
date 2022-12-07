@@ -73,6 +73,8 @@ module.exports = grammar({
         )
       ),
 
+    _dash: ($) => token.immediate("-"),
+
     label: ($) => choice($.string, $._unquoted_string),
 
     attr_value: ($) => seq(spaces, choice($.string, $._unquoted_string)),
@@ -174,8 +176,6 @@ module.exports = grammar({
     _arrow: ($) => seq(spaces, $.arrow),
 
     arrow: ($) => choice(/-+>/, /--+/, /<-+/, /<-+>/),
-
-    _dash: ($) => token.immediate("-"),
 
     dot: ($) => token.immediate("."),
 
