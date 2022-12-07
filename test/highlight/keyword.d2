@@ -1,0 +1,24 @@
+direction: right;
+# <- keyword
+#        ^ punctuation.delimiter
+#          ^ string
+#               ^ punctuation.delimiter
+
+baaaz.style: {
+  # <- variable
+  #   ^ keyword
+  fill: red
+  # <- keyword
+  #     ^ string
+}
+
+foo: Label {
+  shape: oval
+  # <- keyword
+  #      ^ string
+
+  style.fill: red;
+  # <- keyword
+  #     ^ keyword 
+}
+
