@@ -64,6 +64,39 @@ biz <- baz
   )
 )
 
+================================================================================
+Connection with looooong arrow
+================================================================================
+foo ----------- bar
+biz ----------> baz
+biz <---------> baz
+biz <---------- baz
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (connection
+    (shape_key)
+    (arrow)
+    (shape_key)
+  )
+  (connection
+    (shape_key)
+    (arrow)
+    (shape_key)
+  )
+  (connection
+    (shape_key)
+    (arrow)
+    (shape_key)
+  )
+  (connection
+    (shape_key)
+    (arrow)
+    (shape_key)
+  )
+)
+
 
 ================================================================================
 Complex identifier connection

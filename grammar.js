@@ -9,7 +9,6 @@ module.exports = grammar({
 
   conflicts: ($) => [
     [$.shape_key],
-    [$.arrow],
     [$._shape_path],
     [$._shape_block],
     [$._shape_block_definition],
@@ -174,13 +173,7 @@ module.exports = grammar({
 
     _arrow: ($) => seq(spaces, $.arrow),
 
-    arrow: ($) =>
-      choice(
-        seq("--", repeat($._dash)),
-        seq("<-", repeat($._dash)),
-        seq("<-", repeat($._dash), ">"),
-        seq(repeat($._dash), "->")
-      ),
+    arrow: ($) => choice(/-+>/, /--+/, /<-+/, /<-+>/),
 
     _dash: ($) => token.immediate("-"),
 
