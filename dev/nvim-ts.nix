@@ -10,7 +10,7 @@ let
   };
 
   tree-sitter = (pkgs.tree-sitter.override { inherit extraGrammars; });
-  grammars = tree-sitter.withPlugins (g: [ g.tree-sitter-d2 ]);
+  grammars = tree-sitter.withPlugins (g: [ g.tree-sitter-d2 g.tree-sitter-javascript ]);
 
   nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (oldAttrs: {
     postPatch = ''
@@ -37,6 +37,10 @@ let
         enable = true,
       },
     })
+
+    vim.g.catppuccin_flavour = "frappe"
+    require("catppuccin").setup()
+    vim.cmd([[colorscheme catppuccin]])
   '';
 
   neovim = pkgs.neovim.override {
@@ -48,8 +52,9 @@ let
         EOF
       '';
 
-      packages.myPlugins.start = [
+      packages.myPlugins.start = with pkgs.vimPlugins; [
         nvim-treesitter
+        catppuccin-nvim
       ];
     };
   };
