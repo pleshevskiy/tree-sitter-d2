@@ -1,29 +1,58 @@
 { pkgs ? import <nixpkgs> { } }:
 
 let
-  d2-vim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "d2-vim";
-    src = pkgs.fetchFromGitHub {
-      owner = "terrastruct";
-      repo = "d2-vim";
-      rev = "ac58c07ba192d215cbbd2b2207f9def808a9283d";
-      hash = "sha256-rXUhXVmva4K0PqUboSXUpTqNttwehjkjjsEgTCZbGKI=";
+  extraGrammars = {
+    tree-sitter-d2 = {
+      language = "d2";
+      src = ../.;
+      version = "0.0.0";
     };
   };
+
+  tree-sitter = (pkgs.tree-sitter.override { inherit extraGrammars; });
+  grammars = tree-sitter.withPlugins (g: [ g.tree-sitter-d2 ]);
+
+  nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (oldAttrs: {
+    postPatch = ''
+      rm -r parser
+      ln -s ${grammars} parser
+
+      ln -s ${../.}/queries queries/d2
+    '';
+  });
+
+  luaRc = ''
+    local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+    parser_config.d2 = {}
+
+    require("nvim-treesitter.configs").setup({
+      ensure_installed = { },
+      sync_install = false,
+
+      highlight = {
+        enable = true,
+      },
+
+      indent = {
+        enable = true,
+      },
+    })
+  '';
 
   neovim = pkgs.neovim.override {
     configure = {
       customRC = ''
         source ${./vimrc.vim}
+        lua <<EOF
+        ${luaRc}
+        EOF
       '';
 
-      packages.myPlugins.start = with pkgs.vimPlugins; [
-        d2-vim
+      packages.myPlugins.start = [
         nvim-treesitter
       ];
     };
   };
-
 in
 pkgs.runCommand "nvim-ts" { } ''
   mkdir -p $out/bin

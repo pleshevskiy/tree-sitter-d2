@@ -13,3 +13,6 @@ set autoindent
 " Always show statusline.
 set laststatus=2
 set statusline=%<%f\ %m%r%y\ %LL\ %=\ 0x%-4.B\ %-16.(%lL,%cC%V,%oB%)\ %P
+
+" Detect d2 without d2-vim
+au BufNewFile,BufRead *.d2 setfiletype d2
