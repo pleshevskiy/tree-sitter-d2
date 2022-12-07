@@ -969,6 +969,22 @@
         }
       ]
     },
+    "line_comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "#"
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          }
+        ]
+      }
+    },
     "_word": {
       "type": "PATTERN",
       "value": "[\\w\\d]+"
@@ -1028,7 +1044,12 @@
       ]
     }
   },
-  "extras": [],
+  "extras": [
+    {
+      "type": "SYMBOL",
+      "name": "line_comment"
+    }
+  ],
   "conflicts": [
     [
       "identifier"

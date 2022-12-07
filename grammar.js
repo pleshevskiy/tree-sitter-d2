@@ -3,7 +3,7 @@ const spaces = repeat(" ");
 module.exports = grammar({
   name: "d2",
 
-  extras: ($) => [],
+  extras: ($) => [$.line_comment],
 
   word: ($) => $._word,
 
@@ -174,6 +174,8 @@ module.exports = grammar({
         seq('"', repeat(token.immediate(/[^"\n]+/)), '"'),
         seq("`", repeat(token.immediate(/[^`\n]+/)), "`")
       ),
+
+    line_comment: ($) => token(seq("#", /.*/)),
 
     _word: ($) => /[\w\d]+/,
 

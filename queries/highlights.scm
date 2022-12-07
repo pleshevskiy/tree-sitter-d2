@@ -3,12 +3,19 @@
 (identifier) @variable
 (attr_key) @keyword
 
+; Literals
 ;-------------------------------------------------------------------------------
 
 (string) @string
 (label) @string
 (attr_value) @string
 
+; Comments
+;-------------------------------------------------------------------------------
+
+(line_comment) @comment.line
+
+; Punctiation
 ;-------------------------------------------------------------------------------
 
 (arrow) @operator

@@ -270,6 +270,10 @@
     "named": false
   },
   {
+    "type": "line_comment",
+    "named": true
+  },
+  {
     "type": "link",
     "named": false
   },
