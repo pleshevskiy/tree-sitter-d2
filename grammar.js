@@ -1,4 +1,4 @@
-const spaces = repeat(" ");
+const spaces = repeat(choice(" ", "\t"));
 
 module.exports = grammar({
   name: "d2",
@@ -42,8 +42,7 @@ module.exports = grammar({
           choice(
             seq($.dot, $._shape_attribute),
             seq(
-              $._colon,
-              optional($.label),
+              optional(seq($._colon, optional($.label))),
               optional(alias($._shape_block, $.block))
             )
           )
@@ -56,7 +55,15 @@ module.exports = grammar({
     attr_value: ($) => seq(spaces, choice($.string, $._unquoted_string)),
 
     _root_attribute: ($) =>
-      seq(alias($._root_attr_key, $.attr_key), $._colon, $.attr_value, $._end),
+      choice(
+        seq(
+          alias($._root_attr_key, $.attr_key),
+          $._colon,
+          $.attr_value,
+          $._end
+        ),
+        alias(seq($._shape_attribute, $._end), $.invalid)
+      ),
 
     _root_attr_key: ($) => "direction",
 
@@ -64,8 +71,9 @@ module.exports = grammar({
       seq(
         spaces,
         "{",
-        spaces,
-        repeat(choice($._emptyline, seq($._shape_block_definition, $._end))),
+        repeat(
+          choice($._emptyline, seq(spaces, $._shape_block_definition, $._end))
+        ),
         optional(seq($._shape_block_definition, optional($._end))),
         spaces,
         "}"

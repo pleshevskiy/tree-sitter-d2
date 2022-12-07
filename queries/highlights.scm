@@ -1,3 +1,8 @@
+; Special (treesitter don't overwrite)
+;-------------------------------------------------------------------------------
+
+(ERROR) @error
+(invalid (_) @error)
 ;-------------------------------------------------------------------------------
 
 (identifier) @variable
@@ -31,6 +36,8 @@
   "}"
 ] @punctuation.bracket
 
+; Special (nvim-treesitter overwrite previous rules)
 ;-------------------------------------------------------------------------------
 
 (ERROR) @error
+(invalid (_) @error)

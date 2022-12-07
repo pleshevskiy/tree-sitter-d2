@@ -100,6 +100,33 @@
     "fields": {}
   },
   {
+    "type": "invalid",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attr_key",
+          "named": true
+        },
+        {
+          "type": "attr_value",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "dot",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "label",
     "named": true,
     "fields": {},
@@ -170,6 +197,10 @@
           "named": true
         },
         {
+          "type": "invalid",
+          "named": true
+        },
+        {
           "type": "shape",
           "named": true
         }
@@ -183,6 +214,10 @@
   },
   {
     "type": "\u0000",
+    "named": false
+  },
+  {
+    "type": "\t",
     "named": false
   },
   {

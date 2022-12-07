@@ -6,6 +6,12 @@ test: build
 highlight: build
 	tree-sitter highlight -t test/highlight/*.d2
 
+playground: build-wasm
+	tree-sitter playground --quiet
+
+build-wasm: build
+	tree-sitter build-wasm
+
 build:
 	tree-sitter generate
 
@@ -18,8 +24,3 @@ init:
 		cat <<< $$(jq ".\"parser-directories\" |= . + [\"$$(dirname $(PWD))\"]" $(TS_CONF)) > $(TS_CONF); \
 	fi
 
-playground: build-wasm
-	tree-sitter playground
-
-build-wasm:
-	tree-sitter build-wasm
