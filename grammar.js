@@ -188,7 +188,7 @@ module.exports = grammar({
         seq("`", repeat(token.immediate(/[^`\n]+/)), "`")
       ),
 
-    line_comment: ($) => token(seq("#", /.*/)),
+    line_comment: ($) => token(prec(-2, seq("#", /.*/))),
 
     _word: ($) => /[\w\d]+/,
 
