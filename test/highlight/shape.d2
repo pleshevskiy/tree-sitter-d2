@@ -1,0 +1,20 @@
+foo.baz.biz
+# <- variable
+#  ^ delimiter
+#   ^ variable
+#      ^ delimiter
+#       ^ variable
+
+foo: Foo Bar
+# <- variable
+#  ^ delimiter
+#    ^ string
+
+foo: Foo Bar {
+  # <- variable
+  #  ^ label
+
+  bar.baz
+  # <- variable
+  #   ^ variable
+}

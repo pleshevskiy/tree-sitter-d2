@@ -4,5 +4,14 @@
   "description": "",
   "main": "grammar.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "tree-sitter": [
+    {
+      "scope": "source.d2",
+      "file-types": [
+        "d2"
+      ],
+      "injection-regex": "^d2$"
+    }
+  ]
 }
