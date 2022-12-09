@@ -56,6 +56,10 @@
         {
           "type": "dot",
           "named": true
+        },
+        {
+          "type": "label",
+          "named": true
         }
       ]
     }
@@ -97,6 +101,10 @@
       "types": [
         {
           "type": "arrow",
+          "named": true
+        },
+        {
+          "type": "block",
           "named": true
         },
         {
@@ -261,6 +269,10 @@
     "type": "string",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "\u0000",
+    "named": false
   },
   {
     "type": "\"",

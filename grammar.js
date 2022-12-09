@@ -46,7 +46,12 @@ module.exports = grammar({
       seq(
         $._connection_path,
         repeat1(seq($.arrow, $._connection_path)),
-        optional(seq($._colon, $.label))
+        optional(
+          seq(
+            optional(seq($._colon, optional($.label))),
+            optional(seq(alias($._connection_block, $.block)))
+          )
+        )
       ),
 
     _connection_path: ($) =>
@@ -56,6 +61,12 @@ module.exports = grammar({
         ),
         $.shape_key
       ),
+
+    _connection_block: ($) =>
+      seq("{", repeat($._connection_block_definition), "}"),
+
+    _connection_block_definition: ($) =>
+      choice($._eol, seq($._connection_attribute, $._end)),
 
     // containers
 
@@ -67,10 +78,8 @@ module.exports = grammar({
           choice(
             seq($.dot, choice($.shape, $.container)),
             seq(
-              seq(
-                optional(seq($._colon, optional($.label))),
-                optional(seq(alias($._container_block, $.block)))
-              )
+              optional(seq($._colon, optional($.label))),
+              optional(seq(alias($._container_block, $.block)))
             )
           )
         )
@@ -205,7 +214,29 @@ module.exports = grammar({
 
     _text_attr_key: ($) => "near",
 
-    _connection_attr_key: ($) => choice("source-arrowhead", "target-arrowhead"),
+    _connection_attribute: ($) =>
+      choice(
+        alias($._connection_arrowhead_attribute, $.attribute),
+        alias($._style_attribute, $.attribute)
+      ),
+
+    _connection_arrowhead_attribute: ($) =>
+      seq(
+        alias($._connection_arrowhead_attr_key, $.attr_key),
+        choice(
+          seq($.dot, alias($._style_attribute, $.attribute)),
+          seq(
+            optional(seq($._colon, optional($.label))),
+            optional(seq(alias($._container_block, $.block)))
+          )
+        )
+      ),
+
+    _connection_arrowhead_block: ($) =>
+      seq("{", repeat(choice($._eol, seq($._shape_attribute, $._end))), "}"),
+
+    _connection_arrowhead_attr_key: ($) =>
+      choice("source-arrowhead", "target-arrowhead"),
 
     //
 
