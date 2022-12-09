@@ -1,22 +1,22 @@
 foo.'baz'.biz
 # <- constant
 #  ^ punctuation.delimiter
-#   ^ string.special
+#   ^ string
 #        ^ punctuation.delimiter
 #         ^ variable
 
 'biz': 'Baz'
 # <- string
-#      ^ string
+#      ^ string.special
 
 foo: Foo Bar
 # <- variable
 #  ^ punctuation.delimiter
-#    ^ string
+#    ^ string.special
 
 foo: Foo Bar {
   # <- constant
-  #  ^ string
+  #  ^ string.special
   #          ^ punctuation.bracket
 
   bar.baz

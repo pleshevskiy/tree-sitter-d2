@@ -8,11 +8,14 @@
 ; Literals
 ;-------------------------------------------------------------------------------
 
-(language) @string.special
-(container_key (string) @string.special)
+(language) @type.qualifier
+(container_key (string) @string)
 (shape_key (string) @string)
-(label) @string 
+(label) @string.special
 (attr_value) @string
+(integer) @number
+(float) @float
+(boolean) @boolean
 
 ; Comments
 ;-------------------------------------------------------------------------------
@@ -33,6 +36,9 @@
 [
   "{"
   "}"
+  "|"
+  "|`"
+  "`|"
 ] @punctuation.bracket
 
 ; Special (nvim-treesitter overwrite previous rules)
