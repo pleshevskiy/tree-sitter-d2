@@ -1,13 +1,18 @@
 [
   {
-    "type": "arrow",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "attr_key",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "reserved",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "attr_value",
@@ -25,12 +30,12 @@
     }
   },
   {
-    "type": "block",
+    "type": "attribute",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "attr_key",
@@ -41,7 +46,30 @@
           "named": true
         },
         {
+          "type": "attribute",
+          "named": true
+        },
+        {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "dot",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute",
           "named": true
         },
         {
@@ -49,19 +77,11 @@
           "named": true
         },
         {
-          "type": "container_key",
+          "type": "container",
           "named": true
         },
         {
-          "type": "dot",
-          "named": true
-        },
-        {
-          "type": "label",
-          "named": true
-        },
-        {
-          "type": "shape_key",
+          "type": "shape",
           "named": true
         }
       ]
@@ -80,11 +100,38 @@
           "named": true
         },
         {
-          "type": "attr_key",
+          "type": "container_key",
           "named": true
         },
         {
-          "type": "attr_value",
+          "type": "dot",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "shape_key",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "container",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "container",
           "named": true
         },
         {
@@ -100,7 +147,7 @@
           "named": true
         },
         {
-          "type": "shape_key",
+          "type": "shape",
           "named": true
         }
       ]
@@ -122,33 +169,6 @@
     }
   },
   {
-    "type": "invalid",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "attr_key",
-          "named": true
-        },
-        {
-          "type": "attr_value",
-          "named": true
-        },
-        {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "dot",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "label",
     "named": true,
     "fields": {},
@@ -158,6 +178,38 @@
       "types": [
         {
           "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "reserved",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "shape",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        },
+        {
+          "type": "dot",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "shape_key",
           "named": true
         }
       ]
@@ -187,15 +239,7 @@
       "required": false,
       "types": [
         {
-          "type": "attr_key",
-          "named": true
-        },
-        {
-          "type": "attr_value",
-          "named": true
-        },
-        {
-          "type": "block",
+          "type": "attribute",
           "named": true
         },
         {
@@ -203,23 +247,11 @@
           "named": true
         },
         {
-          "type": "container_key",
+          "type": "container",
           "named": true
         },
         {
-          "type": "dot",
-          "named": true
-        },
-        {
-          "type": "invalid",
-          "named": true
-        },
-        {
-          "type": "label",
-          "named": true
-        },
-        {
-          "type": "shape_key",
+          "type": "shape",
           "named": true
         }
       ]
@@ -229,22 +261,6 @@
     "type": "string",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "\u0000",
-    "named": false
-  },
-  {
-    "type": "\t",
-    "named": false
-  },
-  {
-    "type": "\n",
-    "named": false
-  },
-  {
-    "type": " ",
-    "named": false
   },
   {
     "type": "\"",
@@ -275,11 +291,19 @@
     "named": false
   },
   {
+    "type": "arrow",
+    "named": true
+  },
+  {
     "type": "border-radius",
     "named": false
   },
   {
     "type": "constraint",
+    "named": false
+  },
+  {
+    "type": "direction",
     "named": false
   },
   {

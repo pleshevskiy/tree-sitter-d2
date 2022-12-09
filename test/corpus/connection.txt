@@ -196,3 +196,29 @@ foo.biz.baz -> bar.baz.biz: Label
     (label)
   )
 )
+
+================================================================================
+Connection of shapes inside a block of container
+================================================================================
+foo.baz: {
+  foo -> biz: Label
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (container
+    (container_key) (dot)
+    (container
+      (container_key)
+      (block
+        (connection
+          (shape_key)
+          (arrow)
+          (shape_key)
+          (label)
+        )
+      )
+    )
+  )
+)

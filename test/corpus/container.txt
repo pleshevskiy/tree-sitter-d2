@@ -2,22 +2,36 @@
 Declare a shape inside a container
 ================================================================================
 foo.baz
+foo.bar.biz
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (container_key) (dot) (shape_key)
+  (container
+    (container_key) (dot)
+    (shape (shape_key))
+  )
+  (container
+    (container_key) (dot)
+    (container
+      (container_key) (dot)
+      (shape (shape_key))
+    )
+  )
 )
 
 ================================================================================
-Use quoted string as a shape key
+Use quoted string as keys
 ================================================================================
 'foo'.'baz'
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (container_key (string)) (dot) (shape_key (string))
+  (container
+    (container_key (string)) (dot)
+    (shape (shape_key (string)))
+  )
 )
 
 ================================================================================
@@ -35,20 +49,26 @@ foo: {
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape_key)
-  (block
-    (shape_key)
+  (container
+    (container_key)
     (block
-      (shape_key)
-      (block
-        (shape_key)
+      (container
+        (container_key)
+        (block
+          (container
+            (container_key)
+            (block
+              (shape (shape_key))
+            )
+          )
+        )
       )
     )
   )
 )
 
 ================================================================================
-Declare labaled container inside a labeled container using block
+Declare labeled container inside a labeled container using block
 ================================================================================
 
 foo: Foo {
@@ -62,13 +82,22 @@ foo: Foo {
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape_key) (label)
-  (block
-    (shape_key) (label)
+  (container
+    (container_key)
+    (label)
     (block
-      (shape_key) (label)
-      (block
-        (shape_key) (label)
+      (container
+        (container_key)
+        (label)
+        (block
+          (container
+            (container_key)
+            (label)
+            (block
+              (shape (shape_key) (label))
+            )
+          )
+        )
       )
     )
   )
@@ -87,11 +116,111 @@ foo: {
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape_key)
-  (block
-    (shape_key)
-    (shape_key)
-    (shape_key)
+  (container
+    (container_key)
+    (block
+      (shape (shape_key))
+      (shape (shape_key))
+      (shape (shape_key))
+    )
   )
 )
 
+
+================================================================================
+Declare a container with complex keys
+================================================================================
+
+Foo biz bar: {
+  bar biz baz: {
+    -biz-baz-Baz-: {
+      Helo world
+    }
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (container
+    (container_key)
+    (block
+      (container
+        (container_key)
+        (block
+          (container
+            (container_key)
+            (block
+              (shape (shape_key))
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+================================================================================
+Declare a container with complex keys and labels
+================================================================================
+
+Foo biz bar: Biz biz Bar {
+  bar biz baz: baz baz biz {
+    -biz-baz-Baz-: Biz buz Baz {
+      Helo world
+    }
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (container
+    (container_key)
+    (label)
+    (block
+      (container
+        (container_key)
+        (label)
+        (block
+          (container
+            (container_key)
+            (label)
+            (block
+              (shape (shape_key))
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+================================================================================
+Declare shapes sparsely in a container
+================================================================================
+
+Foo: Baz {
+
+  biz
+  
+  baz
+
+  bar
+
+
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (container
+    (container_key)
+    (label)
+    (block
+      (shape (shape_key))
+      (shape (shape_key))
+      (shape (shape_key))
+    )
+  )
+)

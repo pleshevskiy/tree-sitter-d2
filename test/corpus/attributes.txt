@@ -3,59 +3,75 @@ Root attribute
 ================================================================================
 direction: value
 
---------------------------------------------------------------------------------
-
-(source_file
-  (attr_key) (attr_value)
-)
-
-================================================================================
-Block shape attribute
-================================================================================
-foo: {
-  shape: oval
-
-  foo.bar.baz: {
-    shape: oval
-  }
-}
-
---------------------------------------------------------------------------------
-
-(source_file
-  (shape_key)
-  (block
-    (attr_key) (attr_value)
-    (container_key) (dot) (container_key) (dot) (shape_key)
-    (block
-      (attr_key) (attr_value)
-    )
-  )
-)
-
-
-================================================================================
-Inline shape attribute
-================================================================================
-foo.shape: oval
-foo.bar.baz.shape: oval
+shape: oval
+label: ten
+constraint: utehu
+icon: huell
+opacity: 1
+fill: red
+stroke: red
+stroke-width: 5
+stroke-dash: 4
+border-radius: 1
+font-color: red
+shadow: true
+multiple: true
+animated: true
+link: https://to
+near: abc
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape_key) (dot) (attr_key) (attr_value)
-  (container_key) (dot) (container_key) (dot) (shape_key) (dot) (attr_key) (attr_value)
+  (attribute (attr_key) (attr_value))
+
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value))
 )
 
 ================================================================================
-Inline style attribute
+Style attribute
 ================================================================================
 foo.style.opacity: 5
+foo.style.fill: red
+foo.style.stroke: red
+foo.style.stroke-width: 5
+foo.style.stroke-dash: 4
+foo.style.border-radius: 1
+foo.style.font-color: red
+foo.style.shadow: true
+foo.style.multiple: true
+foo.style.animated: true
+foo.style.link: https://to
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape_key) (dot) (attr_key) (dot) (attr_key) (attr_value)
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
 )
 
 ================================================================================
@@ -63,48 +79,150 @@ Block style attributes
 ================================================================================
 foo.style: {
   opacity: 5
-
-  fill: red;
+  fill: red
+  stroke: red
+  stroke-width: 5
+  stroke-dash: 4
+  border-radius: 1
+  font-color: red
+  shadow: true
+  multiple: true
+  animated: true
+  link: https://to
 }
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape_key) (dot) (attr_key)
-  (block
-    (attr_key) (attr_value)
-    (attr_key) (attr_value)
+  (shape
+    (shape_key) (dot)
+    (attribute
+      (attr_key)
+      (block
+        (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value))
+      )
+    )
   )
 )
 
 ================================================================================
-Inline block style attributes
+Container attributes
 ================================================================================
-foo.style: { opacity: 5; fill: red; }
-foo.style: { opacity: 5 }
+foo: {
+  shape: oval
+  label: Baz
+  constraint: primary-key
+  icon: pathto
+  width: 100
+  height: 200
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape_key) (dot) (attr_key)
-  (block
-    (attr_key) (attr_value)
-    (attr_key) (attr_value)
-  )
-  (shape_key) (dot) (attr_key)
-  (block
-    (attr_key) (attr_value)
+  (container
+    (container_key)
+    (block
+      (attribute (attr_key) (attr_value))
+      (attribute (attr_key) (attr_value))
+      (attribute (attr_key) (attr_value))
+      (attribute (attr_key) (attr_value))
+      (attribute (attr_key) (attr_value))
+      (attribute (attr_key) (attr_value))
+    )
   )
 )
 
 ================================================================================
-Color in string
+Container style attributes
 ================================================================================
-foo.style.fill: "#ffffff";
+foo: {
+  style.opacity: 5
+  style.fill: red
+  style.stroke: red
+  style.stroke-width: 5
+  style.stroke-dash: 4
+  style.border-radius: 1
+  style.font-color: red
+  style.shadow: true
+  style.multiple: true
+  style.animated: true
+  style.link: https://to
+}
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape_key) (dot) (attr_key) (dot) (attr_key) (attr_value (string))
+  (container
+    (container_key)
+    (block
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+    )
+  )
+)
+
+================================================================================
+Block style attributes inside a container
+================================================================================
+foo: {
+  style: {
+    opacity: 5
+    fill: red
+    stroke: red
+    stroke-width: 5
+    stroke-dash: 4
+    border-radius: 1
+    font-color: red
+    shadow: true
+    multiple: true
+    animated: true
+    link: https://to
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (container
+    (container_key)
+    (block
+      (attribute
+        (attr_key)
+        (block
+          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value))
+        )
+      )
+    )
+  )
 )
 
