@@ -26,10 +26,20 @@ Complex shape key
 ================================================================================
  Foo bar 
 -Biz-baz-
+imAShape
+im_a_shape
+im a shape
+i'm a shape
+a-shape
 
 --------------------------------------------------------------------------------
 
 (source_file
+  (shape (shape_key))
+  (shape (shape_key))
+  (shape (shape_key))
+  (shape (shape_key))
+  (shape (shape_key))
   (shape (shape_key))
   (shape (shape_key))
 )

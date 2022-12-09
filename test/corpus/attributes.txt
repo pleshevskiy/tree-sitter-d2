@@ -6,7 +6,7 @@ direction: value
 shape: oval
 label: ten
 constraint: utehu
-icon: huell
+icon: ./test.svg
 opacity: 1
 fill: red
 stroke: red
@@ -391,4 +391,5 @@ foo -> bar: {
     )
   )
 )
+
 

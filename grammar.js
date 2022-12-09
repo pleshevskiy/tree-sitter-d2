@@ -116,7 +116,12 @@ module.exports = grammar({
     shape_key: ($) => choice($.string, seq($._identifier, optional($._dash))),
 
     _identifier: ($) =>
-      token(prec(PREC.IDENTIFIER, /\-?([\w\d]+|([\w\d]+( +|\-)[\w\d]+)+)/)),
+      token(
+        prec(
+          PREC.IDENTIFIER,
+          /\-?([\w\d]+([\w\d`'"]+)?|([\w\d]+([\w\d `'"]+)?( +|\-)[\w\d]+([\w\d `'"]+)?)+)/
+        )
+      ),
 
     // attributes
 
@@ -255,7 +260,7 @@ module.exports = grammar({
     dot: ($) => token("."),
 
     _unquoted_string: ($) =>
-      token(prec(PREC.UNQUOTED_STRING, /[\w\-?!]([^'"`\n;{}]*[\w\-?!])?/)),
+      token(prec(PREC.UNQUOTED_STRING, /[^'"`\n\s;{}]([^\n;{}]*[^\n\s;{}])?/)),
 
     string: ($) =>
       choice(
