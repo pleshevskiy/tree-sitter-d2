@@ -1,6 +1,5 @@
 {
   "name": "d2",
-  "word": "_identifier",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -474,38 +473,69 @@
           "name": "string"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_identifier"
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_dash"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_identifier"
         }
       ]
     },
     "_identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 0,
-        "content": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "-"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "PATTERN",
-          "value": "\\-?([\\w\\d]+([\\w\\d`'\"]+)?|([\\w\\d]+([\\w\\d `'\"]+)?( +|\\-)[\\w\\d]+([\\w\\d `'\"]+)?)+)"
+          "value": "[\\w\\d$]"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 0,
+              "content": {
+                "type": "PATTERN",
+                "value": "([\\w\\d'\"$(),]+)?( +|-)[\\w\\d'\"$()]+"
+              }
+            }
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[\\w\\d'\"$()]+"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_dash"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
-      }
+      ]
     },
     "text_block": {
       "type": "CHOICE",
@@ -1247,29 +1277,6 @@
             {
               "type": "STRING",
               "value": "\""
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "`"
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "IMMEDIATE_TOKEN",
-                "content": {
-                  "type": "PATTERN",
-                  "value": "[^`\\n]+"
-                }
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "`"
             }
           ]
         }

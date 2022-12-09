@@ -323,6 +323,10 @@
     "named": false
   },
   {
+    "type": "-",
+    "named": false
+  },
+  {
     "type": "3d",
     "named": false
   },
@@ -332,10 +336,6 @@
   },
   {
     "type": ";",
-    "named": false
-  },
-  {
-    "type": "`",
     "named": false
   },
   {

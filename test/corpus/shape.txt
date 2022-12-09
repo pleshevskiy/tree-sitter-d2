@@ -27,14 +27,16 @@ Complex shape key
  Foo bar 
 -Biz-baz-
 imAShape
-im_a_shape
+im_a$_shape
 im a shape
 i'm a shape
 a-shape
+changeTeam(member, props, ctx)
 
 --------------------------------------------------------------------------------
 
 (source_file
+  (shape (shape_key))
   (shape (shape_key))
   (shape (shape_key))
   (shape (shape_key))

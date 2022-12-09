@@ -103,20 +103,24 @@ Complex identifier connection
 ================================================================================
 Foo Bar -- Biz Baz
 -Bar-Foo- <- -Baz-Biz-
+imAShape -- im_a_shape
+im_a_shape -- im$AShape
+im a shape -- i'm $a shape
+i'm a shape -- a-sh$ape
+a-shape -- im a sh$ape
+foo' 'bar -- baz
 
 --------------------------------------------------------------------------------
 
 (source_file
-  (connection
-    (shape_key)
-    (arrow)
-    (shape_key)
-  )
-  (connection
-    (shape_key)
-    (arrow)
-    (shape_key)
-  )
+  (connection (shape_key) (arrow) (shape_key))
+  (connection (shape_key) (arrow) (shape_key))
+  (connection (shape_key) (arrow) (shape_key))
+  (connection (shape_key) (arrow) (shape_key))
+  (connection (shape_key) (arrow) (shape_key))
+  (connection (shape_key) (arrow) (shape_key))
+  (connection (shape_key) (arrow) (shape_key))
+  (connection (shape_key) (arrow) (shape_key))
 )
 
 ================================================================================

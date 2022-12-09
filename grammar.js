@@ -22,8 +22,6 @@ module.exports = grammar({
     $.line_comment,
   ],
 
-  word: ($) => $._identifier,
-
   conflicts: ($) => [[$._connection_path, $.container]],
 
   rules: {
@@ -116,14 +114,17 @@ module.exports = grammar({
         )
       ),
 
-    shape_key: ($) => choice($.string, seq($._identifier, optional($._dash))),
+    shape_key: ($) => choice($.string, $._identifier),
 
     _identifier: ($) =>
-      token(
-        prec(
-          PREC.IDENTIFIER,
-          /\-?([\w\d]+([\w\d`'"]+)?|([\w\d]+([\w\d `'"]+)?( +|\-)[\w\d]+([\w\d `'"]+)?)+)/
-        )
+      seq(
+        optional("-"),
+        /[\w\d$]/,
+        repeat(
+          token(prec(PREC.IDENTIFIER, /([\w\d'"$(),]+)?( +|-)[\w\d'"$()]+/))
+        ),
+        optional(/[\w\d'"$()]+/),
+        optional($._dash)
       ),
 
     text_block: ($) =>
