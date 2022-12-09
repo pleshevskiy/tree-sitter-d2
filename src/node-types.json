@@ -23,6 +23,18 @@
       "required": false,
       "types": [
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -90,6 +102,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "boolean",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "connection",
@@ -350,8 +367,16 @@
     "named": true
   },
   {
+    "type": "false",
+    "named": false
+  },
+  {
     "type": "fill",
     "named": false
+  },
+  {
+    "type": "float",
+    "named": true
   },
   {
     "type": "font-color",
@@ -364,6 +389,10 @@
   {
     "type": "icon",
     "named": false
+  },
+  {
+    "type": "integer",
+    "named": true
   },
   {
     "type": "label",
@@ -419,6 +448,10 @@
   },
   {
     "type": "target-arrowhead",
+    "named": false
+  },
+  {
+    "type": "true",
     "named": false
   },
   {

@@ -1117,6 +1117,18 @@
           "members": [
             {
               "type": "SYMBOL",
+              "name": "boolean"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "integer"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "float"
+            },
+            {
+              "type": "SYMBOL",
               "name": "string"
             },
             {
@@ -1182,7 +1194,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PREC",
-        "value": 0,
+        "value": -1,
         "content": {
           "type": "PATTERN",
           "value": "[^'\"`|\\n\\s;{}]([^\\n;{}]*[^\\n\\s;{}])?"
@@ -1262,6 +1274,27 @@
           ]
         }
       ]
+    },
+    "boolean": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "true"
+        },
+        {
+          "type": "STRING",
+          "value": "false"
+        }
+      ]
+    },
+    "integer": {
+      "type": "PATTERN",
+      "value": "[0-9]+"
+    },
+    "float": {
+      "type": "PATTERN",
+      "value": "[0-9]+\\.[0-9]+"
     },
     "line_comment": {
       "type": "TOKEN",

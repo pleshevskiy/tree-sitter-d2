@@ -4,17 +4,17 @@ Root attribute
 direction: value
 
 shape: oval
-label: ten
+label: 'one two'
 constraint: utehu
 icon: ./test.svg
-opacity: 1
+opacity: 0.5
 fill: red
 stroke: red
 stroke-width: 5
 stroke-dash: 4
 border-radius: 1
 font-color: red
-shadow: true
+shadow: false
 multiple: true
 animated: true
 link: https://to
@@ -26,19 +26,19 @@ near: abc
   (attribute (attr_key) (attr_value))
 
   (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value (string)))
   (attribute (attr_key (reserved)) (attr_value))
   (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value (float)))
   (attribute (attr_key (reserved)) (attr_value))
   (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value (integer)))
+  (attribute (attr_key (reserved)) (attr_value (integer)))
+  (attribute (attr_key (reserved)) (attr_value (integer)))
   (attribute (attr_key (reserved)) (attr_value))
-  (attribute (attr_key (reserved)) (attr_value))
-  (attribute (attr_key (reserved)) (attr_value))
-  (attribute (attr_key (reserved)) (attr_value))
-  (attribute (attr_key (reserved)) (attr_value))
-  (attribute (attr_key (reserved)) (attr_value))
-  (attribute (attr_key (reserved)) (attr_value))
-  (attribute (attr_key (reserved)) (attr_value))
-  (attribute (attr_key (reserved)) (attr_value))
+  (attribute (attr_key (reserved)) (attr_value (boolean)))
+  (attribute (attr_key (reserved)) (attr_value (boolean)))
+  (attribute (attr_key (reserved)) (attr_value (boolean)))
   (attribute (attr_key (reserved)) (attr_value))
   (attribute (attr_key (reserved)) (attr_value))
 )
@@ -46,14 +46,14 @@ near: abc
 ================================================================================
 Style attribute
 ================================================================================
-foo.style.opacity: 5
+foo.style.opacity: 0.5
 foo.style.fill: red
 foo.style.stroke: red
 foo.style.stroke-width: 5
 foo.style.stroke-dash: 4
 foo.style.border-radius: 1
 foo.style.font-color: red
-foo.style.shadow: true
+foo.style.shadow: false
 foo.style.multiple: true
 foo.style.animated: true
 foo.style.link: https://to
@@ -61,16 +61,16 @@ foo.style.link: https://to
 --------------------------------------------------------------------------------
 
 (source_file
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (float)))))
   (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
   (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (integer)))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (integer)))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (integer)))))
   (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
-  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
-  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
-  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
-  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
-  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
-  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
-  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (boolean)))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (boolean)))))
+  (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (boolean)))))
   (shape (shape_key) (dot) (attribute (attr_key) (dot) (attribute (attr_key) (attr_value))))
 )
 
@@ -78,14 +78,14 @@ foo.style.link: https://to
 Block style attributes
 ================================================================================
 foo.style: {
-  opacity: 5
+  opacity: 0.5
   fill: red
   stroke: red
   stroke-width: 5
   stroke-dash: 4
   border-radius: 1
   font-color: red
-  shadow: true
+  shadow: false
   multiple: true
   animated: true
   link: https://to
@@ -99,16 +99,16 @@ foo.style: {
     (attribute
       (attr_key)
       (block
+        (attribute (attr_key) (attr_value (float)))
         (attribute (attr_key) (attr_value))
         (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value (integer)))
+        (attribute (attr_key) (attr_value (integer)))
+        (attribute (attr_key) (attr_value (integer)))
         (attribute (attr_key) (attr_value))
-        (attribute (attr_key) (attr_value))
-        (attribute (attr_key) (attr_value))
-        (attribute (attr_key) (attr_value))
-        (attribute (attr_key) (attr_value))
-        (attribute (attr_key) (attr_value))
-        (attribute (attr_key) (attr_value))
-        (attribute (attr_key) (attr_value))
+        (attribute (attr_key) (attr_value (boolean)))
+        (attribute (attr_key) (attr_value (boolean)))
+        (attribute (attr_key) (attr_value (boolean)))
         (attribute (attr_key) (attr_value))
       )
     )
@@ -120,7 +120,7 @@ Container attributes
 ================================================================================
 foo: {
   shape: oval
-  label: Baz
+  label: 'Baz'
   constraint: primary-key
   icon: pathto
   width: 100
@@ -134,11 +134,11 @@ foo: {
     (container_key)
     (block
       (attribute (attr_key) (attr_value))
+      (attribute (attr_key) (attr_value (string)))
       (attribute (attr_key) (attr_value))
       (attribute (attr_key) (attr_value))
-      (attribute (attr_key) (attr_value))
-      (attribute (attr_key) (attr_value))
-      (attribute (attr_key) (attr_value))
+      (attribute (attr_key) (attr_value (integer)))
+      (attribute (attr_key) (attr_value (integer)))
     )
   )
 )
@@ -147,7 +147,7 @@ foo: {
 Container style attributes
 ================================================================================
 foo: {
-  style.opacity: 5
+  style.opacity: 0.5
   style.fill: red
   style.stroke: red
   style.stroke-width: 5
@@ -166,16 +166,16 @@ foo: {
   (container
     (container_key)
     (block
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (float))))
       (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
       (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (integer))))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (integer))))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (integer))))
       (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
-      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
-      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
-      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
-      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
-      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
-      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
-      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (boolean))))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (boolean))))
+      (attribute (attr_key) (dot) (attribute (attr_key) (attr_value (boolean))))
       (attribute (attr_key) (dot) (attribute (attr_key) (attr_value)))
     )
   )
@@ -186,7 +186,7 @@ Block style attributes inside a container
 ================================================================================
 foo: {
   style: {
-    opacity: 5
+    opacity: 0.5
     fill: red
     stroke: red
     stroke-width: 5
@@ -209,16 +209,16 @@ foo: {
       (attribute
         (attr_key)
         (block
+          (attribute (attr_key) (attr_value (float)))
           (attribute (attr_key) (attr_value))
           (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value (integer)))
+          (attribute (attr_key) (attr_value (integer)))
+          (attribute (attr_key) (attr_value (integer)))
           (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value (boolean)))
+          (attribute (attr_key) (attr_value (boolean)))
+          (attribute (attr_key) (attr_value (boolean)))
           (attribute (attr_key) (attr_value))
         )
       )
@@ -231,14 +231,14 @@ Block style attributes inside a connection
 ================================================================================
 foo -> bar: {
   style: {
-    opacity: 5
+    opacity: 0.5
     fill: red
     stroke: red
     stroke-width: 5
     stroke-dash: 4
     border-radius: 1
     font-color: red
-    shadow: true
+    shadow: false
     multiple: true
     animated: true
     link: https://to
@@ -256,16 +256,16 @@ foo -> bar: {
       (attribute
         (attr_key)
         (block
+          (attribute (attr_key) (attr_value (float)))
           (attribute (attr_key) (attr_value))
           (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value (integer)))
+          (attribute (attr_key) (attr_value (integer)))
+          (attribute (attr_key) (attr_value (integer)))
           (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value (boolean)))
+          (attribute (attr_key) (attr_value (boolean)))
+          (attribute (attr_key) (attr_value (boolean)))
           (attribute (attr_key) (attr_value))
         )
       )
@@ -307,14 +307,14 @@ Block style attributes inside a connection arrowhead
 foo -> bar: {
   target-arrowhead: {
     style: {
-      opacity: 5
+      opacity: 0.5
       fill: red
       stroke: red
       stroke-width: 5
       stroke-dash: 4
       border-radius: 1
       font-color: red
-      shadow: true
+      shadow: false
       multiple: true
       animated: true
       link: https://to
@@ -336,16 +336,16 @@ foo -> bar: {
           (attribute
             (attr_key)
             (block
+              (attribute (attr_key) (attr_value (float)))
               (attribute (attr_key) (attr_value))
               (attribute (attr_key) (attr_value))
+              (attribute (attr_key) (attr_value (integer)))
+              (attribute (attr_key) (attr_value (integer)))
+              (attribute (attr_key) (attr_value (integer)))
               (attribute (attr_key) (attr_value))
-              (attribute (attr_key) (attr_value))
-              (attribute (attr_key) (attr_value))
-              (attribute (attr_key) (attr_value))
-              (attribute (attr_key) (attr_value))
-              (attribute (attr_key) (attr_value))
-              (attribute (attr_key) (attr_value))
-              (attribute (attr_key) (attr_value))
+              (attribute (attr_key) (attr_value (boolean)))
+              (attribute (attr_key) (attr_value (boolean)))
+              (attribute (attr_key) (attr_value (boolean)))
               (attribute (attr_key) (attr_value))
             )
           )
@@ -361,7 +361,7 @@ Container attributes inside a connection arrowhead
 foo -> bar: {
   target-arrowhead: {
     shape: oval
-    label: Baz
+    label: 'Baz'
     constraint: primary-key
     icon: pathto
     width: 100
@@ -381,11 +381,11 @@ foo -> bar: {
         (attr_key)
         (block
           (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value (string)))
           (attribute (attr_key) (attr_value))
           (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value))
+          (attribute (attr_key) (attr_value (integer)))
+          (attribute (attr_key) (attr_value (integer)))
         )
       )
     )

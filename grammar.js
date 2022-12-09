@@ -2,7 +2,7 @@ const PREC = {
   COMMENT: -2,
   EOL: -1,
   TEXT_BLOCK_CONTENT: -1,
-  UNQUOTED_STRING: 0,
+  UNQUOTED_STRING: -1,
   CONTAINER: 2,
   CONNECTION: 2,
   SHAPE: 3,
@@ -266,7 +266,8 @@ module.exports = grammar({
 
     label: ($) => choice($.string, $._unquoted_string),
 
-    attr_value: ($) => seq(choice($.string, $._unquoted_string)),
+    attr_value: ($) =>
+      seq(choice($.boolean, $.integer, $.float, $.string, $._unquoted_string)),
 
     // --------------------------------------------
 
@@ -287,6 +288,12 @@ module.exports = grammar({
         seq('"', repeat(token.immediate(/[^"\n]+/)), '"'),
         seq("`", repeat(token.immediate(/[^`\n]+/)), "`")
       ),
+
+    boolean: ($) => choice("true", "false"),
+
+    integer: ($) => /[0-9]+/,
+
+    float: ($) => /[0-9]+\.[0-9]+/,
 
     line_comment: ($) => token(prec(PREC.COMMENT, seq("#", /.*/))),
 
