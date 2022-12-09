@@ -41,7 +41,7 @@
   "`|"
 ] @punctuation.bracket
 
-; Special (nvim-treesitter overwrite previous rules)
+; Special
 ;-------------------------------------------------------------------------------
 
 (ERROR) @error

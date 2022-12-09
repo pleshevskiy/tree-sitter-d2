@@ -285,8 +285,7 @@ module.exports = grammar({
     string: ($) =>
       choice(
         seq("'", repeat(token.immediate(/[^'\n]+/)), "'"),
-        seq('"', repeat(token.immediate(/[^"\n]+/)), '"'),
-        seq("`", repeat(token.immediate(/[^`\n]+/)), "`")
+        seq('"', repeat(token.immediate(/[^"\n]+/)), '"')
       ),
 
     boolean: ($) => choice("true", "false"),
