@@ -46,8 +46,13 @@
               ]
             },
             {
-              "type": "SYMBOL",
-              "name": "_end"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_end"
+                }
+              ]
             }
           ]
         }

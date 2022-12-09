@@ -36,7 +36,7 @@ module.exports = grammar({
             $.container,
             $.connection
           ),
-          $._end
+          choice($._end, "\0")
         )
       ),
 
