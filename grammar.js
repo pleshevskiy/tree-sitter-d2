@@ -15,6 +15,8 @@ const PREC = {
 module.exports = grammar({
   name: "d2",
 
+  externals: ($) => [$._text_block_raw],
+
   extras: ($) => [
     /[ \f\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/,
     $.line_comment,
@@ -132,10 +134,11 @@ module.exports = grammar({
       ),
 
     _text_block_definition: ($) =>
-      seq(optional($.language), $._eol, optional($.text_block_content)),
-
-    text_block_content: ($) =>
-      repeat1(token(prec(PREC.TEXT_BLOCK_CONTENT, /.*?[^`|]/))),
+      seq(
+        optional($.language),
+        $._eol,
+        optional(alias($._text_block_raw, $.raw_text))
+      ),
 
     language: ($) => /\w+/,
 

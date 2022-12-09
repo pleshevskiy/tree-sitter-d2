@@ -122,7 +122,7 @@ foo: |
   (shape
     (shape_key)
     (text_block
-      (text_block_content)
+      (raw_text)
     )
   )
 )
@@ -149,7 +149,7 @@ foo: |go
     (shape_key)
     (text_block
       (language)
-      (text_block_content)
+      (raw_text)
     )
   )
 )
@@ -176,7 +176,7 @@ foo: |`go
     (shape_key)
     (text_block
       (language)
-      (text_block_content)
+      (raw_text)
     )
   )
 )

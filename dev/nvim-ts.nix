@@ -10,7 +10,7 @@ let
   };
 
   tree-sitter = (pkgs.tree-sitter.override { inherit extraGrammars; });
-  grammars = tree-sitter.withPlugins (g: [ g.tree-sitter-d2 g.tree-sitter-javascript ]);
+  grammars = tree-sitter.withPlugins (g: tree-sitter.allGrammars);
 
   nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (oldAttrs: {
     postPatch = ''

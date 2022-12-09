@@ -8,6 +8,7 @@
 ; Literals
 ;-------------------------------------------------------------------------------
 
+(language) @string.special
 (container_key (string) @string.special)
 (shape_key (string) @string)
 (label) @string 

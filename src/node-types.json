@@ -287,16 +287,11 @@
           "named": true
         },
         {
-          "type": "text_block_content",
+          "type": "raw_text",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "text_block_content",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "\u0000",
@@ -393,6 +388,10 @@
   {
     "type": "opacity",
     "named": false
+  },
+  {
+    "type": "raw_text",
+    "named": true
   },
   {
     "type": "shadow",
