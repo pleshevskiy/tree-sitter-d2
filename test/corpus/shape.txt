@@ -109,3 +109,74 @@ Use quoted string as shape key and label
   (shape (shape_key (string)) (label (string)))
 )
 
+================================================================================
+Basic text block
+================================================================================
+foo: |
+  - hello
+|
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shape
+    (shape_key)
+    (text_block
+      (text_block_content)
+    )
+  )
+)
+
+================================================================================
+Text block with specific language
+================================================================================
+foo: |go
+
+  awsSession := From(c.Request.Context())
+
+  client := s3.New(awsSession)
+
+
+  ctx, cancelFn := context.WithTimeout(c.Request.Context(), AWS_TIMEOUT)
+
+  defer cancelFn()
+|
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shape
+    (shape_key)
+    (text_block
+      (language)
+      (text_block_content)
+    )
+  )
+)
+
+================================================================================
+Text block with quotes (d2-vim style)
+================================================================================
+foo: |`go
+
+  awsSession := From(c.Request.Context())
+
+  client := s3.New(awsSession)
+
+
+  ctx, cancelFn := context.WithTimeout(c.Request.Context(), AWS_TIMEOUT)
+
+  defer cancelFn()
+`|
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shape
+    (shape_key)
+    (text_block
+      (language)
+      (text_block_content)
+    )
+  )
+)

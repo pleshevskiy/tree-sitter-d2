@@ -219,6 +219,10 @@
         {
           "type": "shape_key",
           "named": true
+        },
+        {
+          "type": "text_block",
+          "named": true
         }
       ]
     }
@@ -271,6 +275,30 @@
     "fields": {}
   },
   {
+    "type": "text_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "language",
+          "named": true
+        },
+        {
+          "type": "text_block_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "text_block_content",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "\u0000",
     "named": false
   },
@@ -296,6 +324,10 @@
   },
   {
     "type": "`",
+    "named": false
+  },
+  {
+    "type": "`|",
     "named": false
   },
   {
@@ -341,6 +373,10 @@
   {
     "type": "label",
     "named": false
+  },
+  {
+    "type": "language",
+    "named": true
   },
   {
     "type": "line_comment",
@@ -392,6 +428,14 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
+    "named": false
+  },
+  {
+    "type": "|`",
     "named": false
   },
   {

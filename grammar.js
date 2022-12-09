@@ -1,6 +1,7 @@
 const PREC = {
   COMMENT: -2,
   EOL: -1,
+  TEXT_BLOCK_CONTENT: -1,
   UNQUOTED_STRING: 0,
   CONTAINER: 2,
   CONNECTION: 2,
@@ -107,7 +108,7 @@ module.exports = grammar({
           optional(
             choice(
               seq($.dot, alias($._style_attribute, $.attribute)),
-              seq(optional(seq($._colon, optional($.label))))
+              seq(optional(seq($._colon, choice($.label, $.text_block))))
             )
           )
         )
@@ -122,6 +123,21 @@ module.exports = grammar({
           /\-?([\w\d]+([\w\d`'"]+)?|([\w\d]+([\w\d `'"]+)?( +|\-)[\w\d]+([\w\d `'"]+)?)+)/
         )
       ),
+
+    text_block: ($) =>
+      choice(
+        seq("|", $._text_block_definition, "|"),
+        // References: https://github.com/terrastruct/d2-vim
+        seq("|`", $._text_block_definition, "`|")
+      ),
+
+    _text_block_definition: ($) =>
+      seq(optional($.language), $._eol, optional($.text_block_content)),
+
+    text_block_content: ($) =>
+      repeat1(token(prec(PREC.TEXT_BLOCK_CONTENT, /.*?[^`|]/))),
+
+    language: ($) => /\w+/,
 
     // attributes
 
@@ -260,7 +276,7 @@ module.exports = grammar({
     dot: ($) => token("."),
 
     _unquoted_string: ($) =>
-      token(prec(PREC.UNQUOTED_STRING, /[^'"`\n\s;{}]([^\n;{}]*[^\n\s;{}])?/)),
+      token(prec(PREC.UNQUOTED_STRING, /[^'"`|\n\s;{}]([^\n;{}]*[^\n\s;{}])?/)),
 
     string: ($) =>
       choice(
