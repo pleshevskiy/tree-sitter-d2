@@ -39,8 +39,6 @@
   "{"
   "}"
   "|"
-  "|`"
-  "`|"
 ] @punctuation.bracket
 
 ; Special

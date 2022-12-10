@@ -544,71 +544,47 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_text_block_start"
+              },
+              "named": false,
               "value": "|"
             },
             {
-              "type": "SYMBOL",
-              "name": "_text_block_definition"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "language"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             },
             {
-              "type": "STRING",
-              "value": "|"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "|`"
+              "type": "PATTERN",
+              "value": "\\s"
             },
-            {
-              "type": "SYMBOL",
-              "name": "_text_block_definition"
-            },
-            {
-              "type": "STRING",
-              "value": "`|"
-            }
-          ]
-        }
-      ]
-    },
-    "_text_block_definition": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "language"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\s"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
             {
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "_text_block_raw"
+                "name": "_text_block_raw_text"
               },
               "named": true,
               "value": "raw_text"
             },
             {
-              "type": "BLANK"
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_text_block_end"
+              },
+              "named": false,
+              "value": "|"
             }
           ]
         }
@@ -1446,7 +1422,15 @@
   "externals": [
     {
       "type": "SYMBOL",
-      "name": "_text_block_raw"
+      "name": "_text_block_start"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_text_block_end"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_text_block_raw_text"
     }
   ],
   "inline": [],

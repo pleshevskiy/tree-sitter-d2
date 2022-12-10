@@ -15,7 +15,11 @@ const PREC = {
 module.exports = grammar({
   name: "d2",
 
-  externals: ($) => [$._text_block_raw],
+  externals: ($) => [
+    $._text_block_start,
+    $._text_block_end,
+    $._text_block_raw_text,
+  ],
 
   extras: ($) => [
     /[ \f\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/,
@@ -129,16 +133,13 @@ module.exports = grammar({
 
     text_block: ($) =>
       choice(
-        seq("|", $._text_block_definition, "|"),
-        // References: https://github.com/terrastruct/d2-vim
-        seq("|`", $._text_block_definition, "`|")
-      ),
-
-    _text_block_definition: ($) =>
-      seq(
-        optional($.language),
-        /\s/,
-        optional(alias($._text_block_raw, $.raw_text))
+        seq(
+          alias($._text_block_start, "|"),
+          optional($.language),
+          /\s/,
+          alias($._text_block_raw_text, $.raw_text),
+          alias($._text_block_end, "|")
+        )
       ),
 
     language: ($) => /\w+/,

@@ -311,7 +311,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "language",
@@ -350,10 +350,6 @@
   },
   {
     "type": ";",
-    "named": false
-  },
-  {
-    "type": "`|",
     "named": false
   },
   {
@@ -486,10 +482,6 @@
   },
   {
     "type": "|",
-    "named": false
-  },
-  {
-    "type": "|`",
     "named": false
   },
   {
