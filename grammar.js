@@ -132,14 +132,12 @@ module.exports = grammar({
       ),
 
     text_block: ($) =>
-      choice(
-        seq(
-          alias($._text_block_start, "|"),
-          optional($.language),
-          /\s/,
-          alias($._text_block_raw_text, $.raw_text),
-          alias($._text_block_end, "|")
-        )
+      seq(
+        alias($._text_block_start, "|"),
+        optional($.language),
+        /\s/,
+        alias($._text_block_raw_text, $.raw_text),
+        alias($._text_block_end, "|")
       ),
 
     language: ($) => /\w+/,

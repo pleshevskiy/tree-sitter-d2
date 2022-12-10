@@ -9,5 +9,6 @@ if [ ! -z $(git diff --cached --name-only | grep -e "^grammar.js$") ]
 then
   make build
   make build-wasm
+  git add src bindings *.wasm
 fi
 
