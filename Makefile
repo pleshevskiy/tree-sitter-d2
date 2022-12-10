@@ -15,7 +15,9 @@ build-wasm: build
 build:
 	tree-sitter generate
 
-init:
+init: init-tree-sitter init-git-hooks
+
+init-tree-sitter:
 	if [ ! -f "$(TS_CONF)" ]; then \
 		tree-sitter init-config; \
 	fi
@@ -24,3 +26,5 @@ init:
 		cat <<< $$(jq ".\"parser-directories\" |= . + [\"$$(dirname $(PWD))\"]" $(TS_CONF)) > $(TS_CONF); \
 	fi
 
+init-git-hooks:
+	ln -s $(PWD)/scripts/pre-commit $(PWD)/.git/hooks/pre-commit

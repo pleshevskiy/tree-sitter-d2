@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
-# Can be used as a pre-push hook
-# Just symlink this file to .git/hooks/pre-push
+# Can be used as a pre-commit hook
+# Just symlink this file to .git/hooks/pre-commit
 
 set -xe
 
