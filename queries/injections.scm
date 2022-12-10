@@ -33,3 +33,4 @@
   (raw_text) @content
 )
 
+(line_comment) @comment
