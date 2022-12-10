@@ -8,10 +8,11 @@
 ; Literals
 ;-------------------------------------------------------------------------------
 
-(language) @type.qualifier
-(container_key (string) @string)
-(shape_key (string) @string)
-(label) @string.special
+(string) @string
+(container_key (string (string_fragment) @string))
+(shape_key (string (string_fragment) @string))
+(escape_sequence) @string.escape
+(label) @text.title
 (attr_value) @string
 (integer) @number
 (float) @float
@@ -20,6 +21,7 @@
 ; Comments
 ;-------------------------------------------------------------------------------
 
+(language) @comment
 (line_comment) @comment.line
 
 ; Punctiation

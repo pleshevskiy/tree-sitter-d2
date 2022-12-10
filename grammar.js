@@ -137,7 +137,7 @@ module.exports = grammar({
     _text_block_definition: ($) =>
       seq(
         optional($.language),
-        $._eol,
+        /\s/,
         optional(alias($._text_block_raw, $.raw_text))
       ),
 
@@ -285,8 +285,44 @@ module.exports = grammar({
 
     string: ($) =>
       choice(
-        seq("'", repeat(token.immediate(/[^'\n]+/)), "'"),
-        seq('"', repeat(token.immediate(/[^"\n]+/)), '"')
+        seq(
+          "'",
+          repeat(
+            choice(
+              alias($._unescaped_single_string_fragment, $.string_fragment),
+              $.escape_sequence
+            )
+          ),
+          "'"
+        ),
+        seq(
+          '"',
+          repeat(
+            choice(
+              alias($._unescaped_double_string_fragment, $.string_fragment),
+              $.escape_sequence
+            )
+          ),
+          '"'
+        )
+      ),
+
+    _unescaped_single_string_fragment: ($) => token.immediate(/[^'\\\n]+/),
+
+    _unescaped_double_string_fragment: ($) => token.immediate(/[^"\\\n]+/),
+
+    escape_sequence: ($) =>
+      token.immediate(
+        seq(
+          "\\",
+          choice(
+            /[^xu0-7]/,
+            /[0-7]{1,3}/,
+            /x[0-9a-fA-F]{2}/,
+            /u[0-9a-fA-F]{4}/,
+            /u{[0-9a-fA-F]+}/
+          )
+        )
       ),
 
     boolean: ($) => choice("true", "false"),

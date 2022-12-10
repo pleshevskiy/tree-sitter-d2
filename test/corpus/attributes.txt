@@ -26,7 +26,7 @@ near: abc
   (attribute (attr_key) (attr_value))
 
   (attribute (attr_key (reserved)) (attr_value))
-  (attribute (attr_key (reserved)) (attr_value (string)))
+  (attribute (attr_key (reserved)) (attr_value (string (string_fragment))))
   (attribute (attr_key (reserved)) (attr_value))
   (attribute (attr_key (reserved)) (attr_value))
   (attribute (attr_key (reserved)) (attr_value (float)))
@@ -134,7 +134,7 @@ foo: {
     (container_key)
     (block
       (attribute (attr_key) (attr_value))
-      (attribute (attr_key) (attr_value (string)))
+      (attribute (attr_key) (attr_value (string (string_fragment))))
       (attribute (attr_key) (attr_value))
       (attribute (attr_key) (attr_value))
       (attribute (attr_key) (attr_value (integer)))
@@ -381,7 +381,7 @@ foo -> bar: {
         (attr_key)
         (block
           (attribute (attr_key) (attr_value))
-          (attribute (attr_key) (attr_value (string)))
+          (attribute (attr_key) (attr_value (string (string_fragment))))
           (attribute (attr_key) (attr_value))
           (attribute (attr_key) (attr_value))
           (attribute (attr_key) (attr_value (integer)))

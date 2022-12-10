@@ -1,0 +1,13 @@
+#! /usr/bin/env bash
+
+# Can be used as a pre-push hook
+# Just symlink this file to .git/hooks/pre-push
+
+set -xe
+
+if [ ! -z $(git diff --cached --name-only | grep -e "^grammar.js$") ]
+then
+  make build
+  make build-wasm
+fi
+

@@ -29,8 +29,8 @@ Use quoted string as keys
 
 (source_file
   (container
-    (container_key (string)) (dot)
-    (shape (shape_key (string)))
+    (container_key (string (string_fragment))) (dot)
+    (shape (shape_key (string (string_fragment))))
   )
 )
 

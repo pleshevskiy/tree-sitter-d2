@@ -54,7 +54,7 @@ Use quoted string as a shape key
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (shape_key (string)))
+  (shape (shape_key (string (string_fragment))))
 )
 
 ================================================================================
@@ -108,7 +108,9 @@ Use quoted string as shape key and label
 --------------------------------------------------------------------------------
 
 (source_file
-  (shape (shape_key (string)) (label (string)))
+  (shape
+    (shape_key (string (string_fragment)))
+    (label (string (string_fragment))))
 )
 
 ================================================================================

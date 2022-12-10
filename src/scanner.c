@@ -31,20 +31,18 @@ static bool scan_raw_text(TSLexer *lexer) {
       return has_content;
     }
 
-    if (lexer->lookahead == '\n') {
+    while (iswspace(lexer->lookahead)) {
       advance(lexer);
       lexer->mark_end(lexer);
+    }
 
-      while (iswspace(lexer->lookahead)) {
-        advance(lexer);
-        lexer->mark_end(lexer);
-      }
+    if (lexer->lookahead == '`') {
+      advance(lexer);
+    }
 
-      if (lexer->lookahead == '`') {
-        advance(lexer);
-      }
-
-      if (lexer->lookahead == '|') {
+    if (lexer->lookahead == '|') {
+      advance(lexer);
+      if (lexer->lookahead == '\n') {
         return has_content;
       }
     }

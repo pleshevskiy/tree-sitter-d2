@@ -2,21 +2,28 @@ foo.'baz'.biz
 # <- constant
 #  ^ punctuation.delimiter
 #   ^ string
+#     ^ string
 #        ^ punctuation.delimiter
 #         ^ variable
 
-'biz': 'Baz'
+'b\nz'
+# ^ string.escape
+#  ^ string.escape
+
+'biz': 'Baz\nBiz'
 # <- string
-#      ^ string.special
+#      ^ string
+#        ^ string
+#           ^ string.escape
 
 foo: Foo Bar
 # <- variable
 #  ^ punctuation.delimiter
-#    ^ string.special
+#    ^ text.title
 
 foo: Foo Bar {
   # <- constant
-  #  ^ string.special
+  #  ^ text.title
   #          ^ punctuation.bracket
 
   bar.baz
