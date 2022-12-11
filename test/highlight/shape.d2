@@ -6,11 +6,15 @@ foo.'baz'.biz
 #        ^ punctuation.delimiter
 #         ^ variable
 
-'b\nz'
+"b\nz"
 # ^ string.escape
 #  ^ string.escape
 
-'biz': 'Baz\nBiz'
+'b\nz'
+# ^ string
+#  ^ string
+
+'biz': "Baz\nBiz"
 # <- string
 #      ^ string
 #        ^ string
