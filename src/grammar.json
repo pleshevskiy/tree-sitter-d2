@@ -1213,25 +1213,13 @@
               "value": "'"
             },
             {
-              "type": "REPEAT",
+              "type": "ALIAS",
               "content": {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_unescaped_single_string_fragment"
-                    },
-                    "named": true,
-                    "value": "string_fragment"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "escape_sequence"
-                  }
-                ]
-              }
+                "type": "SYMBOL",
+                "name": "_unescaped_single_string_fragment"
+              },
+              "named": true,
+              "value": "string_fragment"
             },
             {
               "type": "STRING",
@@ -1279,7 +1267,7 @@
       "type": "IMMEDIATE_TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "[^'\\\\\\n]+"
+        "value": "[^'\\n]+"
       }
     },
     "_unescaped_double_string_fragment": {

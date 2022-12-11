@@ -286,12 +286,7 @@ module.exports = grammar({
       choice(
         seq(
           "'",
-          repeat(
-            choice(
-              alias($._unescaped_single_string_fragment, $.string_fragment),
-              $.escape_sequence
-            )
-          ),
+          alias($._unescaped_single_string_fragment, $.string_fragment),
           "'"
         ),
         seq(
@@ -306,7 +301,7 @@ module.exports = grammar({
         )
       ),
 
-    _unescaped_single_string_fragment: ($) => token.immediate(/[^'\\\n]+/),
+    _unescaped_single_string_fragment: ($) => token.immediate(/[^'\n]+/),
 
     _unescaped_double_string_fragment: ($) => token.immediate(/[^"\\\n]+/),
 

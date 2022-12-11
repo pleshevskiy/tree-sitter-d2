@@ -58,6 +58,25 @@ Use quoted string as a shape key
 )
 
 ================================================================================
+Use escape sequence in quoted string as a shape key
+================================================================================
+'\# hello \# world'
+
+"\# hello \# world"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shape (shape_key (string (string_fragment))))
+  (shape (shape_key (string
+    (escape_sequence)
+    (string_fragment)
+    (escape_sequence)
+    (string_fragment)
+  )))
+)
+
+================================================================================
 Define multiple shapes using semicolons
 ================================================================================
 a;b;c
@@ -159,9 +178,9 @@ foo: |go
 )
 
 ================================================================================
-Text block with quotes (d2-vim style)
+Text block with quotes (custom escape characters)
 ================================================================================
-foo: |`go
+foo: |$$$go
 
   awsSession := From(c.Request.Context())
 
@@ -171,7 +190,7 @@ foo: |`go
   ctx, cancelFn := context.WithTimeout(c.Request.Context(), AWS_TIMEOUT)
 
   defer cancelFn()
-`|
+$$$|
 
 --------------------------------------------------------------------------------
 
@@ -190,7 +209,7 @@ Online text block
 ================================================================================
 foo: | helo world |
 
-bar: |%%md ## hello world %%|
+bar: |##md ## hello world ##|
 
 --------------------------------------------------------------------------------
 
