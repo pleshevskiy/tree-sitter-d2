@@ -361,6 +361,10 @@
     "named": true
   },
   {
+    "type": "block_comment",
+    "named": true
+  },
+  {
     "type": "border-radius",
     "named": false
   },

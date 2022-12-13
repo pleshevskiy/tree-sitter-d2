@@ -1393,6 +1393,10 @@
     {
       "type": "SYMBOL",
       "name": "line_comment"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "block_comment"
     }
   ],
   "conflicts": [
@@ -1414,6 +1418,10 @@
     {
       "type": "SYMBOL",
       "name": "_text_block_raw_text"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "block_comment"
     }
   ],
   "inline": [],

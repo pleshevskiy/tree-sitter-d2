@@ -19,11 +19,13 @@ module.exports = grammar({
     $._text_block_start,
     $._text_block_end,
     $._text_block_raw_text,
+    $.block_comment,
   ],
 
   extras: ($) => [
     /[ \f\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/,
     $.line_comment,
+    $.block_comment,
   ],
 
   conflicts: ($) => [[$._connection_path, $.container]],

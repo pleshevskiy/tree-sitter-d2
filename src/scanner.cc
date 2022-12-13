@@ -10,6 +10,7 @@ namespace {
     TEXT_BLOCK_START,
     TEXT_BLOCK_END,
     TEXT_BLOCK_RAW_TEXT,
+    BLOCK_COMMENT,
   };
 
   struct Scanner {
@@ -68,6 +69,17 @@ namespace {
         return true;
     }
 
+    bool is_triple_double_quote(TSLexer *lexer) {
+      for (int i = 0; i < 3; ++i) {
+        if (lexer->lookahead != '"') {
+          return false;
+        }
+        advance(lexer);
+      }
+
+      return true;
+    }
+
     bool scan(TSLexer *lexer, const bool *valid_symbols) {
       if (valid_symbols[TEXT_BLOCK_START] && escape_char_stack.empty()) {
         lexer->result_symbol = TEXT_BLOCK_START;
@@ -120,6 +132,25 @@ namespace {
           lexer->mark_end(lexer);
         }
         
+        return true;
+      } else if (valid_symbols[BLOCK_COMMENT]) {
+        lexer->result_symbol = BLOCK_COMMENT;
+        lexer->mark_end(lexer);
+
+        // Check start of block comment
+        if (!is_triple_double_quote(lexer)) {
+          return false;
+        }
+
+        // Search end of block comment
+        while (!is_triple_double_quote(lexer)) {
+          // d2 expects closed tag for block comment
+          if (lexer->lookahead == 0) return false;
+          advance(lexer);
+        }
+
+        lexer->mark_end(lexer);
+
         return true;
       }
 
