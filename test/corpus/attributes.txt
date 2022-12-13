@@ -302,6 +302,31 @@ foo -> bar: {
 )
 
 ================================================================================
+Define attributes for connection in single-line
+================================================================================
+foo -> bar: {source-arrowhead: 0; target-arrowhead: 1}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (connection
+    (shape_key)
+    (arrow)
+    (shape_key)
+    (block
+      (attribute
+        (attr_key)
+        (label)
+      )
+      (attribute
+        (attr_key)
+        (label)
+      )
+    )
+  )
+)
+
+================================================================================
 Block style attributes inside a connection arrowhead
 ================================================================================
 foo -> bar: {
@@ -392,4 +417,23 @@ foo -> bar: {
   )
 )
 
+================================================================================
+Declire style attributes in single-line
+================================================================================
+foo.style: {opacity: 0.5; fill: red}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shape
+    (shape_key) (dot)
+    (attribute
+      (attr_key)
+      (block
+        (attribute (attr_key) (attr_value (float)))
+        (attribute (attr_key) (attr_value))
+      )
+    )
+  )
+)
 

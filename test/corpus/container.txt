@@ -224,3 +224,46 @@ Foo: Baz {
     )
   )
 )
+
+================================================================================
+Declare shapes in a container in single-line (Issue #11)
+================================================================================
+primty: Primitive types {
+  Never: {"!"}
+
+  Boolean: {bool}
+
+  Textual: {char; str}
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (container
+    (container_key)
+    (label)
+    (block
+      (container
+        (container_key)
+        (block
+          (shape
+            (shape_key (string (string_fragment)))
+          )
+        )
+      )
+      (container
+        (container_key)
+        (block
+          (shape (shape_key))
+        )
+      )
+      (container
+        (container_key)
+        (block
+          (shape (shape_key))
+          (shape (shape_key))
+        )
+      )
+    )
+  )
+)

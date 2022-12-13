@@ -28,7 +28,12 @@ module.exports = grammar({
     $.block_comment,
   ],
 
-  conflicts: ($) => [[$._connection_path, $.container]],
+  conflicts: ($) => [
+    [$._connection_path, $.container],
+    [$._container_block],
+    [$._connection_block],
+    [$._style_attribute_block],
+  ],
 
   rules: {
     source_file: ($) => repeat($._root_definition),
@@ -70,10 +75,12 @@ module.exports = grammar({
       ),
 
     _connection_block: ($) =>
-      seq("{", repeat($._connection_block_definition), "}"),
-
-    _connection_block_definition: ($) =>
-      choice($._eol, seq($._connection_attribute, $._end)),
+      seq(
+        "{",
+        repeat(choice($._eol, seq($._connection_attribute, $._end))),
+        optional(seq($._connection_attribute, optional($._end))),
+        "}"
+      ),
 
     // containers
 
@@ -93,16 +100,15 @@ module.exports = grammar({
       ),
 
     _container_block: ($) =>
-      seq("{", repeat($._container_block_definition), "}"),
+      seq(
+        "{",
+        repeat(choice($._eol, seq($._container_block_definition, $._end))),
+        optional(seq($._container_block_definition, optional($._end))),
+        "}"
+      ),
 
     _container_block_definition: ($) =>
-      choice(
-        $._eol,
-        seq(
-          choice($.shape, $.container, $.connection, $._shape_attribute),
-          $._end
-        )
-      ),
+      choice($.shape, $.container, $.connection, $._shape_attribute),
 
     // shapes
 
@@ -211,6 +217,9 @@ module.exports = grammar({
             $._eol,
             seq(alias($._inner_style_attribute, $.attribute), $._end)
           )
+        ),
+        optional(
+          seq(alias($._inner_style_attribute, $.attribute), optional($._end))
         ),
         "}"
       ),
