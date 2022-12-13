@@ -23,6 +23,7 @@
 
 (language) @comment
 (line_comment) @comment.line
+(block_comment) @comment.block
 
 ; Punctiation
 ;-------------------------------------------------------------------------------
