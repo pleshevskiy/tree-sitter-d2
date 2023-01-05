@@ -293,7 +293,17 @@ module.exports = grammar({
     dot: ($) => token("."),
 
     _unquoted_string: ($) =>
-      token(prec(PREC.UNQUOTED_STRING, /[^'"`|\n\s;{}]([^\n;{}]*[^\n\s;{}])?/)),
+      repeat1(
+        choice(
+          $.escape_sequence,
+          token(
+            prec(
+              PREC.UNQUOTED_STRING,
+              /[^'"`\\|\n\s;{}]([^\\\n;{}]*[^\\\n\s;{}])?/
+            )
+          )
+        )
+      ),
 
     string: ($) =>
       choice(
