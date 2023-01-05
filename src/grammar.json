@@ -539,30 +539,36 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "STRING",
-              "value": "-"
+              "type": "PATTERN",
+              "value": "[\\w\\d$-]"
             },
             {
-              "type": "BLANK"
+              "type": "SYMBOL",
+              "name": "escape_sequence"
             }
           ]
         },
         {
-          "type": "PATTERN",
-          "value": "[\\w\\d$]"
-        },
-        {
           "type": "REPEAT",
           "content": {
-            "type": "TOKEN",
-            "content": {
-              "type": "PREC",
-              "value": 0,
-              "content": {
-                "type": "PATTERN",
-                "value": "([\\w\\d'\"$(),]+)?( +|-)[\\w\\d'\"$()]+"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "escape_sequence"
+              },
+              {
+                "type": "TOKEN",
+                "content": {
+                  "type": "PREC",
+                  "value": 0,
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "([\\w\\d'\"$(),]+)?( +|-)[\\w\\d'\"$()]+"
+                  }
+                }
               }
-            }
+            ]
           }
         },
         {

@@ -130,10 +130,12 @@ module.exports = grammar({
 
     _identifier: ($) =>
       seq(
-        optional("-"),
-        /[\w\d$]/,
+        choice(/[\w\d$-]/, $.escape_sequence),
         repeat(
-          token(prec(PREC.IDENTIFIER, /([\w\d'"$(),]+)?( +|-)[\w\d'"$()]+/))
+          choice(
+            $.escape_sequence,
+            token(prec(PREC.IDENTIFIER, /([\w\d'"$(),]+)?( +|-)[\w\d'"$()]+/))
+          )
         ),
         optional(/[\w\d'"$()]+/),
         optional($._dash)

@@ -183,9 +183,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        },
         {
           "type": "string",
           "named": true
@@ -249,9 +253,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        },
         {
           "type": "string",
           "named": true
@@ -334,10 +342,6 @@
   },
   {
     "type": "'",
-    "named": false
-  },
-  {
-    "type": "-",
     "named": false
   },
   {
