@@ -28,3 +28,6 @@ init-tree-sitter:
 
 init-git-hooks:
 	ln -s $(PWD)/scripts/pre-commit $(PWD)/.git/hooks/pre-commit
+
+help:
+	cat Makefile
