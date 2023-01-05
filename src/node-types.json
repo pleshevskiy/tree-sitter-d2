@@ -19,11 +19,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "escape_sequence",
           "named": true
         },
         {
@@ -202,9 +206,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        },
         {
           "type": "string",
           "named": true
@@ -474,6 +482,10 @@
   },
   {
     "type": "target-arrowhead",
+    "named": false
+  },
+  {
+    "type": "tooltip",
     "named": false
   },
   {

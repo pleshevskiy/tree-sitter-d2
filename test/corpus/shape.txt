@@ -104,6 +104,21 @@ a: Foo Bar; b: Biz Baz
 )
 
 ================================================================================
+Label with escape sequence
+================================================================================
+a: Foo\nB\#ar
+a: Foo\nB\@r; b: Biz\nBaz
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shape (shape_key) (label (escape_sequence) (escape_sequence)))
+  (shape (shape_key) (label (escape_sequence) (escape_sequence)))
+  (shape (shape_key) (label (escape_sequence)))
+)
+
+
+================================================================================
 It should skip white spaces
 ================================================================================
 

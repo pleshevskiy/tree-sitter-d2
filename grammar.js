@@ -190,6 +190,8 @@ module.exports = grammar({
         choice(
           "shape",
           "label",
+          "link",
+          "tooltip",
           // sql
           "constraint",
           // image

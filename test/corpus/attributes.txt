@@ -125,6 +125,8 @@ foo: {
   icon: pathto
   width: 100
   height: 200
+  link: https://microsoft.com
+  tooltip: Gee, I feel kind of LIGHT in the head now,\nknowing I can't make my satellite dish PAYMENTS!
 }
 
 --------------------------------------------------------------------------------
@@ -139,6 +141,8 @@ foo: {
       (attribute (attr_key) (attr_value))
       (attribute (attr_key) (attr_value (integer)))
       (attribute (attr_key) (attr_value (integer)))
+      (attribute (attr_key) (attr_value))
+      (attribute (attr_key) (attr_value (escape_sequence)))
     )
   )
 )

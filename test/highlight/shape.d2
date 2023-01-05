@@ -35,3 +35,10 @@ foo: Foo Bar {
   #   ^ variable
 }
 # <- punctuation.bracket
+
+foo: Foo\#Ba\@r {
+  #  ^ text.title
+  #      ^ string.escape
+  #       ^ text.title
+  #          ^ string.escape
+}

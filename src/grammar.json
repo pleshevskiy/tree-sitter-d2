@@ -779,6 +779,14 @@
           },
           {
             "type": "STRING",
+            "value": "link"
+          },
+          {
+            "type": "STRING",
+            "value": "tooltip"
+          },
+          {
+            "type": "STRING",
             "value": "constraint"
           },
           {
@@ -1286,14 +1294,26 @@
       }
     },
     "_unquoted_string": {
-      "type": "TOKEN",
+      "type": "REPEAT1",
       "content": {
-        "type": "PREC",
-        "value": -1,
-        "content": {
-          "type": "PATTERN",
-          "value": "[^'\"`|\\n\\s;{}]([^\\n;{}]*[^\\n\\s;{}])?"
-        }
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "escape_sequence"
+          },
+          {
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": -1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[^'\"`\\\\|\\n\\s;{}]([^\\\\\\n;{}]*[^\\\\\\n\\s;{}])?"
+              }
+            }
+          }
+        ]
       }
     },
     "string": {

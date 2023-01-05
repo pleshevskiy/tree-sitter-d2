@@ -26,7 +26,6 @@ foo: Label {
   #     ^ property 
 }
 
-
 foo: {
   style: {
     opacity: 0.5
@@ -42,4 +41,19 @@ foo: {
     animated: false
     #         ^ boolean
   }
+}
+
+foo: Label {
+  tooltip: Gee, I feel kind of LIGHT in the head now,\nknowing I can't make my satellite dish PAYMENTS!
+  # <- property
+  #        ^ string
+  #                                                  ^ string.escape
+
+  link: https://microsoft.com
+  # <- property
+  #     ^ string
+
+  style.fill: red
+  # <- property
+  #     ^ property 
 }
