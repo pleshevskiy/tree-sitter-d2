@@ -188,6 +188,7 @@ module.exports = grammar({
       prec(
         PREC.ATTRIBUTE_KEY,
         choice(
+          "direction",
           "shape",
           "label",
           "link",
@@ -244,11 +245,16 @@ module.exports = grammar({
         "stroke-width",
         "stroke-dash",
         "border-radius",
+        "double-border",
+        "font-size",
         "font-color",
         "shadow",
         "multiple",
         "animated",
-        "link"
+        "link",
+        "italic",
+        "bold",
+        "underline"
       ),
 
     _text_attr_key: ($) => "near",

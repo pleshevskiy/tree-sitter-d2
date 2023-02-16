@@ -377,6 +377,10 @@
     "named": true
   },
   {
+    "type": "bold",
+    "named": false
+  },
+  {
     "type": "border-radius",
     "named": false
   },
@@ -391,6 +395,10 @@
   {
     "type": "dot",
     "named": true
+  },
+  {
+    "type": "double-border",
+    "named": false
   },
   {
     "type": "escape_sequence",
@@ -413,6 +421,10 @@
     "named": false
   },
   {
+    "type": "font-size",
+    "named": false
+  },
+  {
     "type": "height",
     "named": false
   },
@@ -423,6 +435,10 @@
   {
     "type": "integer",
     "named": true
+  },
+  {
+    "type": "italic",
+    "named": false
   },
   {
     "type": "label",
@@ -490,6 +506,10 @@
   },
   {
     "type": "true",
+    "named": false
+  },
+  {
+    "type": "underline",
     "named": false
   },
   {

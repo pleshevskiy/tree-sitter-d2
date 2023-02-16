@@ -771,6 +771,10 @@
         "members": [
           {
             "type": "STRING",
+            "value": "direction"
+          },
+          {
+            "type": "STRING",
             "value": "shape"
           },
           {
@@ -1008,6 +1012,14 @@
         },
         {
           "type": "STRING",
+          "value": "double-border"
+        },
+        {
+          "type": "STRING",
+          "value": "font-size"
+        },
+        {
+          "type": "STRING",
           "value": "font-color"
         },
         {
@@ -1025,6 +1037,18 @@
         {
           "type": "STRING",
           "value": "link"
+        },
+        {
+          "type": "STRING",
+          "value": "italic"
+        },
+        {
+          "type": "STRING",
+          "value": "bold"
+        },
+        {
+          "type": "STRING",
+          "value": "underline"
         }
       ]
     },
